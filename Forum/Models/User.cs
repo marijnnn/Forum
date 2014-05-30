@@ -46,6 +46,12 @@ namespace Forum.Models
 
         public static bool Login(string username, string password)
         {
+            User user = User.GetUser(username);
+
+            if (user != null && user.Password == password)
+            {
+                return true;
+            }
 
             return false;
         }
