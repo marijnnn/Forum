@@ -52,12 +52,12 @@ namespace Forum
 
         public void Delete()
         {
-
+            MainCategory.DeleteMainCategory(this);
         }
 
         public void Save()
         {
-
+            MainCategory.ChangeMainCategory(this);
         }
     }
 }
