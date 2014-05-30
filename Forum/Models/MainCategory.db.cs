@@ -11,5 +11,16 @@ namespace Forum.Models
         {
             return new List<MainCategory>();
         }
+
+        public static void AddMainCategory(MainCategory maincategory)
+        {
+            int id = Database.GetSequence("SEQ_MAINCATEGORY");
+            Database.Execute("INSERT INTO MAINCATEGORY (MAINCATEGORY_ID, MAINCATEGORY_NAME, MAINCATEGORY_ORDERNUMBER) VALUES (@id, @name, @ordernumber)", new Dictionary<string, object>()
+            {
+                {"@name", maincategory.Name},
+                {"@ordernumber", maincategory.OrderNumber}
+            });
+            maincategory.Id = id;
+        }
 	}
 }

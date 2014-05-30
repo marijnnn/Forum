@@ -28,7 +28,7 @@ namespace Forum.Models
 
         public static void AddMainCategory(MainCategory maincategory)
         {
-
+            MainCategory.AddMainCategory(maincategory);
         }
     }
 }
