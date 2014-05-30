@@ -15,17 +15,36 @@ namespace Forum
 
         public static List<Category> GetCategories()
         {
-            return (List<Category>)null;
+            List<Category> categories = new List<Category>();
+
+            foreach (DataRow row in Database.GetData("SELECT * FROM CATEGORY").Rows)
+            {
+                categories.Add(rowToCategory(row));
+            }
+
+            return categories;
         }
 
         public static Category GetCategory(int id)
         {
-            return (Category)null;
+            foreach (DataRow row in Database.GetData("SELECT * FROM CATEGORY WHERE CATEGORY_ID = " + id).Rows)
+            {
+                return rowToCategory(row);
+            }
+
+            return null;
         }
 
         public static List<Category> GetCategoryByMainCategory(MainCategory maincategory)
         {
-            return (List<Category>)null;
+            List<Category> categories = new List<Category>();
+
+            foreach (DataRow row in Database.GetData("SELECT * FROM CATEGORY WHERE CATEGORY_MAINCATEGORY_ID = " + maincategory.Id).Rows)
+            {
+                categories.Add(rowToCategory(row));
+            }
+
+            return categories;
         }
 
         public static void AddCategory(MainCategory maincategory, Category category)
@@ -37,7 +56,7 @@ namespace Forum
                 {"@name", category.Name},
                 {"@description", category.Description},
                 {"@ordernumber", category.OrderNumber},
-                {"@minimumright", category.MinimumRight},
+                {"@minimumright", (int)category.MinimumRight},
                 {"@maincategory_id", maincategory.Id}
             });
             category.Id = id;
