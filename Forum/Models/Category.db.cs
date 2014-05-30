@@ -70,5 +70,22 @@ namespace Forum
             });
             category.Id = id;
         }
+
+        public static void ChangeCategory(Category category, MainCategory maincategory = null)
+        {
+            Database.Execute("UPDATE CATEGORY SET CATEGORY_NAME = @name, CATEGORY_DESCRIPTION = @description, CATEGORY_ORDERNUMBER = @ordernumber, CATEGORY_MINIMUMRIGHT = @minimumright WHERE CATEGORY_ID = @id", new Dictionary<string, object>()
+            {
+                {"@id", category.Id},
+                {"@name", category.Name},
+                {"@description", category.Description},
+                {"@ordernumber", category.OrderNumber},
+                {"@minimumright", (int)category.MinimumRight}
+            });
+
+            if (maincategory == null)
+            {
+                Database.Execute("UPDATE CATEGORY SET CATEGORY_MAINCATEGORY_ID = " + maincategory.Id + " WHERE CATEGORY_ID = " + category.Id);
+            }
+        }
     }
 }
