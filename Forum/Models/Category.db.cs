@@ -87,5 +87,10 @@ namespace Forum
                 Database.Execute("UPDATE CATEGORY SET CATEGORY_MAINCATEGORY_ID = " + maincategory.Id + " WHERE CATEGORY_ID = " + category.Id);
             }
         }
+
+        public static void DeleteCategory(Category category)
+        {
+            Database.Execute("DELETE FROM CATEGORY WHERE CATEGORY_ID = " + category.Id);
+        }
     }
 }

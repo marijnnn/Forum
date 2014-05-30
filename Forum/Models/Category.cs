@@ -105,7 +105,7 @@ namespace Forum
 
         public void Delete()
         {
-
+            Category.DeleteCategory(this);
         }
 
         public void Save(MainCategory maincategory = null)
