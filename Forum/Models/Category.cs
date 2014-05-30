@@ -108,9 +108,9 @@ namespace Forum
 
         }
 
-        public void Save()
+        public void Save(MainCategory maincategory = null)
         {
-
+            Category.ChangeCategory(this, maincategory);
         }
     }
 }
