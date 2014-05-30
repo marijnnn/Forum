@@ -47,7 +47,7 @@ namespace Forum
 
         public void AddCategory(Category category)
         {
-
+            Category.AddCategory(this, category);
         }
 
         public void Delete()
