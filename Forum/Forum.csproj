@@ -111,6 +111,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Category.db.cs" />
+    <Compile Include="Models\Current.cs" />
+    <Compile Include="Models\Forum.cs" />
+    <Compile Include="Models\MainCategory.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Message.db.cs" />
+    <Compile Include="Models\MessageFile.cs" />
+    <Compile Include="Models\MessageFile.db.cs" />
+    <Compile Include="Models\Right.cs" />
+    <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\Topic.db.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User.db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,10 +144,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\MainCategory.db.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
