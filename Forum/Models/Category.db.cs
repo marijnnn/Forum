@@ -10,7 +10,16 @@ namespace Forum
     {
         private static Category rowToCategory(DataRow row)
         {
-            return new Category(Convert.ToInt32(row["CATEGORY_ID"]), row["CATEGORY_NAME"].ToString(), row["CATEGORY_DESCRIPTION"].ToString(), Convert.ToInt32(row["CATEGORY_ORDERNUMBER"]), Convert.ToInt32(row["CATEGORY_TOPICCOUNT"]), Convert.ToInt32(row["CATEGORY_MESSAGECOUNT"]), Convert.ToInt32(row["CATEGORY_LASTMESSAGE_ID"]), (Right)Enum.Parse(typeof(Right), row["CATEGORY_MINIMUMRIGHT"].ToString()));
+            return new Category(
+                Convert.ToInt32(row["CATEGORY_ID"]), 
+                row["CATEGORY_NAME"].ToString(), 
+                row["CATEGORY_DESCRIPTION"].ToString(), 
+                Convert.ToInt32(row["CATEGORY_ORDERNUMBER"]), 
+                Convert.ToInt32(row["CATEGORY_TOPICCOUNT"]), 
+                Convert.ToInt32(row["CATEGORY_MESSAGECOUNT"]), 
+                row["CATEGORY_LASTMESSAGE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(row["CATEGORY_LASTMESSAGE_ID"]), 
+                (Right)Enum.Parse(typeof(Right), row["CATEGORY_MINIMUMRIGHT"].ToString())
+            );
         }
 
         public static List<Category> GetCategories()
