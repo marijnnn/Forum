@@ -87,5 +87,30 @@ namespace Forum
         {
             return Topic.GetTopicByCategory(this, page, count);
         }
+
+        public bool HasAccess()
+        {
+            return false;
+        }
+
+        public void AddTopic(Topic topic)
+        {
+
+        }
+
+        public bool Isread()
+        {
+            return false;
+        }
+
+        public void Delete()
+        {
+
+        }
+
+        public void Save()
+        {
+
+        }
     }
 }
