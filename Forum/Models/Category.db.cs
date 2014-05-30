@@ -82,7 +82,7 @@ namespace Forum
                 {"@minimumright", (int)category.MinimumRight}
             });
 
-            if (maincategory == null)
+            if (maincategory != null)
             {
                 Database.Execute("UPDATE CATEGORY SET CATEGORY_MAINCATEGORY_ID = " + maincategory.Id + " WHERE CATEGORY_ID = " + category.Id);
             }
