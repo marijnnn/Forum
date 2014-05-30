@@ -44,7 +44,7 @@ namespace Forum
             return null;
         }
 
-        public static List<Category> GetCategoryByMainCategory(MainCategory maincategory)
+        public static List<Category> GetCategoriesByMainCategory(MainCategory maincategory)
         {
             List<Category> categories = new List<Category>();
 

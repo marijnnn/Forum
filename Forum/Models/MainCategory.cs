@@ -29,7 +29,7 @@ namespace Forum
         {
             get
             {
-                return Category.GetCategoryByMainCategory(this);
+                return Category.GetCategoriesByMainCategory(this);
             }
         }
 
