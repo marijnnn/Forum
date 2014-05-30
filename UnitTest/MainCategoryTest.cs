@@ -54,6 +54,7 @@ namespace UnitTest
         public void DeleteMainCategory()
         {
             this.Toegevoegd.Delete();
+            Assert.IsNull(Forum.MainCategory.GetMainCategory(this.Toegevoegd.Id), "Verwijderde MainCategory gevonden.");
         }
 
     }
