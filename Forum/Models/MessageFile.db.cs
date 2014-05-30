@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Forum.Models
+namespace Forum
 {
     public partial class MessageFile
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 
-namespace Forum.Models
+namespace Forum
 {
 	public partial class MainCategory
 	{

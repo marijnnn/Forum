@@ -6,7 +6,7 @@ using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Data;
 
-namespace Forum.Models
+namespace Forum
 {
     public static class Database
     {
