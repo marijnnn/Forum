@@ -19,11 +19,7 @@ namespace Forum.Models
             set;
         }
 
-        public string Password
-        {
-            get;
-            set;
-        }
+        private string password;
 
         public Right Right
         {
@@ -40,7 +36,7 @@ namespace Forum.Models
         public User(string username, string password, Right right)
         {
             this.Username = username;
-            this.Password = password;
+            this.password = password;
             this.Right = right;
         }
 
@@ -48,7 +44,7 @@ namespace Forum.Models
         {
             User user = User.GetUser(username);
 
-            if (user != null && user.Password == password)
+            if (user != null && user.password == password)
             {
                 return true;
             }
