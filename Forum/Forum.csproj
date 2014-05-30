@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -114,6 +118,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category.db.cs" />
     <Compile Include="Models\Current.cs" />
+    <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\MainCategory.cs" />
     <Compile Include="Models\Message.cs" />
