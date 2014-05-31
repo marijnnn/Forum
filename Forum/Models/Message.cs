@@ -10,7 +10,7 @@ namespace Forum
         public int Id
         {
             get;
-            set;
+            private set;
         }
         public string Text
         {
@@ -61,17 +61,17 @@ namespace Forum
         }
 
         public Message(int id, string text, DateTime date, int authorid, int topicid)
-            : this(text, date, authorid, topicid)
+            : this(text, date, authorid)
         {
             this.Id = id;
+            this.TopicId = topicid;
         }
 
-        public Message(string text, DateTime date, int authorid, int topicid)
+        public Message(string text, DateTime date, int authorid)
         {
             this.Text = text;
             this.Date = date;
             this.AuthorId = authorid;
-            this.TopicId = topicid;
         }
 
         public bool IsRead()

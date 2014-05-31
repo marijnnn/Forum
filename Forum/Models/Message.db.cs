@@ -21,5 +21,19 @@ namespace Forum
         {
             return (List<Message>)null;
         }
+
+        public static void AddMessage(Message message)
+        {
+            int id = Database.GetSequence("SEQ_MESSAGE");
+            Database.Execute("INSERT INTO MESSAGE (MESSAGE_ID, MESSAGE_TEXT, MESSAGE_DATE, MESSAGE_AUTHOR_ID, MESSAGE_TOPIC_ID) VALUES (@id, @text, TO_DATE(@date, 'SYYYY-MM-DD HH24:MI:SS'), @author_id, @topic_id)", new Dictionary<string, object>()
+            {
+                {"@id", id},
+                {"@text", message.Text},
+                {"@date", message.Date.ToString("yyyy-MM-dd HH:mm:ss")},
+                {"@author_id", message.AuthorId},
+                {"@topic_id", message.TopicId}
+            });
+            message.Id = id;
+        }
     }
 }
