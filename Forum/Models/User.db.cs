@@ -8,7 +8,7 @@ namespace Forum
 {
     public partial class User
     {
-        private static User rowToUser(DataRow row)
+        public static User rowToUser(DataRow row)
         {
             return new User(Convert.ToInt32(row["USER_ID"]), row["USER_NAME"].ToString(), row["USER_PASSWORD"].ToString(), (Right)Enum.Parse(typeof(Right), row["USER_RIGHT"].ToString()));
         }
