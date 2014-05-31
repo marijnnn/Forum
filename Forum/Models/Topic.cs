@@ -110,6 +110,19 @@ namespace Forum
 
         public bool IsRead()
         {
+            if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
+            {
+                return true;
+            }
+            else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this.Category))
+            {
+                return true;
+            }
+            else if (this.LastMessage.Date < Topic.GetLastMarkAsRead(this))
+            {
+                return true;
+            }
+
             return false;
         }
 
