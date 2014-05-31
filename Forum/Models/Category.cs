@@ -93,9 +93,9 @@ namespace Forum
             return false;
         }
 
-        public void AddTopic(Topic topic)
+        public void AddTopic(Topic topic, Message message)
         {
-
+            
         }
 
         public bool Isread()
