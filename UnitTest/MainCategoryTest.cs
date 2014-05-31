@@ -14,6 +14,7 @@ namespace UnitTest
         }
 
         [TestInitialize]
+        [TestMethod]
         public void AddMainCategory()
         {
             this.Toegevoegd = new Forum.MainCategory("test", 7);
@@ -49,7 +50,7 @@ namespace UnitTest
             Assert.AreEqual(this.Toegevoegd.OrderNumber, maincategory.OrderNumber, "Ordernumber komt niet overeen met gewijzigd");
         }
 
-        [TestCleanup]
+        //[TestCleanup]
         [TestMethod]
         public void DeleteMainCategory()
         {

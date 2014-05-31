@@ -35,7 +35,7 @@ namespace UnitTest
         {
             this.Toegevoegd.Delete();
             List<Forum.MessageFile> messagefiles = Forum.MessageFile.GetMessageFilesByMessage(this.messagetest.Toegevoegd);
-            Assert.AreNotEqual(messagefiles.Count, 0, "Verwijderde messagefile gevonden.");
+            Assert.AreEqual(messagefiles.Count, 0, "Verwijderde messagefile gevonden.");
             this.messagetest.DeleteMessage();
         }
     }
