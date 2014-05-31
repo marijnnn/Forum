@@ -75,6 +75,7 @@ namespace UnitTest
         {
             this.Toegevoegd.Delete();
             Assert.IsNull(Forum.Category.GetCategory(this.Toegevoegd.Id), "Verwijderde Category gevonden.");
+            this.maincategorytest.DeleteMainCategory();
         }
     }
 }
