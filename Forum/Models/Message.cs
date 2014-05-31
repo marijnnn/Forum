@@ -15,13 +15,13 @@ namespace Forum
         public string Text
         {
             get;
-            set;
+            private set;
         }
 
         public int AuthorId
         {
             get;
-            set;
+            private set;
         }
 
         private User author;
@@ -44,20 +44,29 @@ namespace Forum
         public DateTime Date
         {
             get;
-            set;
+            private set;
         }
 
         public int TopicId
         {
             get;
-            set;
+            private set;
         }
 
+        private Topic topic;
         public Topic Topic
         {
             get
             {
-                return Topic.GetTopic(this.TopicId);
+                if (this.topic != null)
+                {
+                    return this.topic;
+                }
+                return this.topic = Topic.GetTopic(this.TopicId);
+            }
+            set
+            {
+                this.topic = value;
             }
         }
 

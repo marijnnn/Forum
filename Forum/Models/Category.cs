@@ -34,26 +34,35 @@ namespace Forum
         public int TopicCount
         {
             get;
-            set;
+            private set;
         }
 
         public int MessageCount
         {
             get;
-            set;
+            private set;
         }
 
         public int LastMessageId
         {
             get;
-            set;
+            private set;
         }
 
+        private Message lastmessage;
         public Message LastMessage
         {
             get
             {
-                return Message.GetMessage(this.LastMessageId);
+                if (this.lastmessage != null)
+                {
+                    return this.lastmessage;
+                }
+                return this.lastmessage = Message.GetMessage(this.LastMessageId);
+            }
+            set
+            {
+                this.lastmessage = value;
             }
         }
 

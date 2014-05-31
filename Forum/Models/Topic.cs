@@ -22,7 +22,7 @@ namespace Forum
         public int AuthorId
         {
             get;
-            set;
+            private set;
         }
 
         private User author;
@@ -48,11 +48,20 @@ namespace Forum
             private set;
         }
 
+        private Message lastmessage;
         public Message LastMessage
         {
             get
             {
-                return Message.GetMessage(this.LastMessageId);
+                if (this.lastmessage != null)
+                {
+                    return this.lastmessage;
+                }
+                return this.lastmessage = Message.GetMessage(this.LastMessageId);
+            }
+            set
+            {
+                this.lastmessage = value;
             }
         }
 
@@ -62,11 +71,20 @@ namespace Forum
             set;
         }
 
+        private Category category;
         public Category Category
         {
             get
             {
-                return Category.GetCategory(this.CategoryId);
+                if (this.category != null)
+                {
+                    return this.category;
+                }
+                return this.category = Category.GetCategory(this.CategoryId);
+            }
+            set
+            {
+                this.category = value;
             }
         }
 
