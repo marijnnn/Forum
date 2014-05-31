@@ -36,7 +36,7 @@ namespace Forum
             return null;
         }
 
-        public static List<Topic> GetTopicByCategory(Category category, int page = 0, int count = 30)
+        public static List<Topic> GetTopicByCategory(Category category)
         {
             List<Topic> topics = new List<Topic>();
 

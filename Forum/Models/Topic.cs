@@ -70,6 +70,14 @@ namespace Forum
             }
         }
 
+        public List<Message> Messages
+        {
+            get
+            {
+                return Message.GetMessagesByTopic(this);
+            }
+        }
+
         public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
             : this(name, authorid)
         {
@@ -82,11 +90,6 @@ namespace Forum
         {
             this.Name = name;
             this.AuthorId = authorid;
-        }
-
-        public List<Message> GetMessages(int page, int count = 10)
-        {
-            return Message.GetMessagesByTopic(this, page, count);
         }
 
         public bool HasAccess()
