@@ -62,16 +62,16 @@ namespace Forum
         }
 
         public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
-            : this(name, authorid, lastmessageid, categoryid)
+            : this(name, authorid, categoryid)
         {
             this.Id = id;
+            this.LastMessageId = lastmessageid;
         }
 
-        public Topic(string name, int authorid, int lastmessageid, int categoryid)
+        public Topic(string name, int authorid, int categoryid)
         {
             this.Name = name;
             this.AuthorId = authorid;
-            this.LastMessageId = lastmessageid;
             this.CategoryId = categoryid;
         }
 
