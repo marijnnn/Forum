@@ -88,7 +88,7 @@ namespace Forum
 
         public void MarkAsRead()
         {
-
+            Category.MarkAsRead(this);
         }
 
         public bool HasAccess()
