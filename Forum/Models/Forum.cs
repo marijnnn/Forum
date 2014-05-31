@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Forum
 {
-    public static class Forum
+    public static partial class Forum
     {
         public static List<MainCategory> MainCategories
         {
@@ -19,11 +19,6 @@ namespace Forum
         {
             get;
             set;
-        }
-
-        public static void MarkAsRead()
-        {
-
         }
 
         public static void AddMainCategory(MainCategory maincategory)
