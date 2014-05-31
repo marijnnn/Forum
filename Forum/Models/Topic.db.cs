@@ -47,5 +47,18 @@ namespace Forum
 
             return topics;
         }
+
+        public static void AddTopic(Category category, Topic topic)
+        {
+            int id = Database.GetSequence("SEQ_TOPIC");
+            Database.Execute("INSERT INTO TOPIC (TOPIC_ID, TOPIC_NAME, TOPIC_AUTHOR_ID, TOPIC_CATEGORY_ID) VALUES (@id, @name, @author_id, @category_id)", new Dictionary<string, object>()
+            {
+                {"@id", id},
+                {"@name", topic.Name},
+                {"@author_id", topic.AuthorId},
+                {"@category_id", category.Id}
+            });
+            topic.Id = id;
+        }
     }
 }

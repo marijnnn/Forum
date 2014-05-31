@@ -95,7 +95,8 @@ namespace Forum
 
         public void AddTopic(Topic topic, Message message)
         {
-            
+            Topic.AddTopic(this, topic);
+            topic.AddMessage(message);
         }
 
         public bool Isread()
