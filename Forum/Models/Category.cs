@@ -49,6 +49,14 @@ namespace Forum
             set;
         }
 
+        public Message LastMessage
+        {
+            get
+            {
+                return Message.GetMessage(this.LastMessageId);
+            }
+        }
+
         public Right MinimumRight
         {
             get;
@@ -103,8 +111,21 @@ namespace Forum
             topic.AddMessage(message);
         }
 
-        public bool Isread()
+        public bool IsRead()
         {
+            if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
+            {
+                return true;
+            }
+            else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this))
+            {
+                return true;
+            }
+            else if (this.UnreadTopicCount != 0)
+            {
+                return true;
+            }
+
             return false;
         }
 
