@@ -1,6 +1,52 @@
-﻿@{
+﻿@model IEnumerable<Forum.MainCategory>
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
+@foreach (var maincatory in Model)
+{
+<div class="panel panel-default">
+    <div class="panel-heading">@Html.DisplayFor(modelItem => maincatory.Name)</div>
+
+    <table class="table">
+        <tr>
+            <th colspan="2">
+                Forum
+            </th>
+            <th>
+                Topics
+            </th>
+            <th>
+                Berichten
+            </th>
+            <th>
+                Laatst bericht
+            </th>
+        </tr>
+
+        @foreach (var category in maincatory.Categories)
+        {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => category.UnreadTopicCount)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => category.Name)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => category.TopicCount)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => category.MessageCount)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => category.LastMessage.Date)
+            </th>
+        </tr>
+        }
+    </table>
+</div>
+}

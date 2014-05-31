@@ -13,7 +13,7 @@ namespace Forum.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(Forum.MainCategories);
         }
 
     }
