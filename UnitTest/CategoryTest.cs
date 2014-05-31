@@ -71,7 +71,7 @@ namespace UnitTest
 
         [TestCleanup]
         [TestMethod]
-        public void DeleteMainCategory()
+        public void DeleteCategory()
         {
             this.Toegevoegd.Delete();
             Assert.IsNull(Forum.Category.GetCategory(this.Toegevoegd.Id), "Verwijderde Category gevonden.");
