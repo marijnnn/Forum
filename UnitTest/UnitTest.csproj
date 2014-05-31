@@ -61,6 +61,7 @@
     <Compile Include="TopicTest.cs" />
     <Compile Include="MessageTest.cs" />
     <Compile Include="MessageFileTest.cs" />
+    <Compile Include="ReadTest.cs" />
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
