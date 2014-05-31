@@ -19,7 +19,14 @@ namespace Forum
 
         public static void AddUser(User user)
         {
-
+            int id = Database.GetSequence("SEQ_USERS");
+            Database.Execute("INSERT INTO USERS (USER_ID, USER_NAME, USER_PASSWORD) VALUES (@id, @name, @password)", new Dictionary<string, object>()
+            {
+                {"@id", id},
+                {"@name", user.Username},
+                {"@password", user.password}
+            });
+            user.Id = id;
         }
     }
 }
