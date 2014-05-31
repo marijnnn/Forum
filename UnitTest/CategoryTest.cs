@@ -6,7 +6,7 @@ namespace UnitTest
     [TestClass]
     public class CategoryTest
     {
-        MainCategoryTest maincategorytest = new MainCategoryTest();
+        private MainCategoryTest maincategorytest = new MainCategoryTest();
 
         public Forum.Category Toegevoegd
         {
