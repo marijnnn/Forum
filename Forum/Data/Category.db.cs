@@ -92,5 +92,10 @@ namespace Forum
         {
             Database.Execute("DELETE FROM CATEGORY WHERE CATEGORY_ID = " + category.Id);
         }
+
+        public static void MarkAsRead(Category category)
+        {
+            Database.Execute("REPLACE INTO ")
+        }
     }
 }

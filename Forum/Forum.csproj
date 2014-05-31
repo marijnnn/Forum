@@ -118,20 +118,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Category.db.cs" />
-    <Compile Include="Models\Current.cs" />
-    <Compile Include="Models\Database.cs" />
+    <Compile Include="Data\Category.db.cs" />
+    <Compile Include="Helper\Current.cs" />
+    <Compile Include="Data\Database.cs" />
     <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\MainCategory.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\Message.db.cs" />
+    <Compile Include="Data\Message.db.cs" />
     <Compile Include="Models\MessageFile.cs" />
-    <Compile Include="Models\MessageFile.db.cs" />
+    <Compile Include="Data\MessageFile.db.cs" />
     <Compile Include="Models\Right.cs" />
     <Compile Include="Models\Topic.cs" />
-    <Compile Include="Models\Topic.db.cs" />
+    <Compile Include="Data\Topic.db.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\User.db.cs" />
+    <Compile Include="Data\User.db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +155,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MainCategory.db.cs" />
+    <Compile Include="Data\MainCategory.db.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
