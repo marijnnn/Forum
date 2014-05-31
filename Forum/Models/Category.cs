@@ -101,6 +101,7 @@ namespace Forum
             this.Name = name;
             this.Description = description;
             this.MinimumRight = minimumright;
+            this.UnreadTopicCount = 0;
         }
 
         public void MarkAsRead()
@@ -127,11 +128,11 @@ namespace Forum
 
         public bool IsRead()
         {
-            if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
+            if (this.LastMessage != null && this.LastMessage.Date < Forum.GetLastMarkAsRead())
             {
                 return true;
             }
-            else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this))
+            else if (this.LastMessage != null && this.LastMessage.Date < Category.GetLastMarkAsRead(this))
             {
                 return true;
             }
