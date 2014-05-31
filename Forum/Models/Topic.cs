@@ -68,7 +68,7 @@ namespace Forum
         public int CategoryId
         {
             get;
-            private set;
+            set;
         }
 
         private Category category;
