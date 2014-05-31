@@ -60,6 +60,7 @@
     <Compile Include="CategoryTest.cs" />
     <Compile Include="TopicTest.cs" />
     <Compile Include="MessageTest.cs" />
+    <Compile Include="MessageFileTest.cs" />
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
