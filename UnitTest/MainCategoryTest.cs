@@ -25,8 +25,8 @@ namespace UnitTest
         {
             Forum.MainCategory maincategory = Forum.MainCategory.GetMainCategory(this.Toegevoegd.Id);
             Assert.IsNotNull(maincategory, "Toegevoegde MainCategory niet gevonden.");
-            Assert.AreEqual(maincategory.Name, this.Toegevoegd.Name, "Naam komt niet overeen met toegevoegd");
-            Assert.AreEqual(maincategory.OrderNumber, this.Toegevoegd.OrderNumber, "Ordernumber komt niet overeen met toegevoegd");
+            Assert.AreEqual(this.Toegevoegd.Name, maincategory.Name, "Naam komt niet overeen met toegevoegd");
+            Assert.AreEqual(this.Toegevoegd.OrderNumber, maincategory.OrderNumber, "Ordernumber komt niet overeen met toegevoegd");
         }
 
         [TestMethod]
@@ -45,8 +45,8 @@ namespace UnitTest
 
             Forum.MainCategory maincategory = Forum.MainCategory.GetMainCategory(this.Toegevoegd.Id);
             Assert.IsNotNull(maincategory, "Veranderde MainCategory niet gevonden.");
-            Assert.AreEqual(maincategory.Name, this.Toegevoegd.Name, "Naam komt niet overeen met gewijzigd");
-            Assert.AreEqual(maincategory.OrderNumber, this.Toegevoegd.OrderNumber, "Ordernumber komt niet overeen met gewijzigd");
+            Assert.AreEqual(this.Toegevoegd.Name, maincategory.Name, "Naam komt niet overeen met gewijzigd");
+            Assert.AreEqual(this.Toegevoegd.OrderNumber, maincategory.OrderNumber, "Ordernumber komt niet overeen met gewijzigd");
         }
 
         [TestCleanup]

@@ -39,10 +39,10 @@ namespace UnitTest
         {
             Forum.Category category = Forum.Category.GetCategory(this.Toegevoegd.Id);
             Assert.IsNotNull(category, "Toegevoegde category niet gevonden.");
-            Assert.AreEqual(category.Name, this.Toegevoegd.Name, "Naam komt niet overeen met toegevoegd");
-            Assert.AreEqual(category.Description, this.Toegevoegd.Description, "Omschrijving komt niet overeen met toegevoegd");
-            Assert.AreEqual(category.OrderNumber, this.Toegevoegd.OrderNumber, "Ordernumber komt niet overeen met toegevoegd");
-            Assert.AreEqual(category.MinimumRight, this.Toegevoegd.MinimumRight, "Minimumright komt niet overeen met toegevoegd");
+            Assert.AreEqual(this.Toegevoegd.Name, category.Name, "Naam komt niet overeen met toegevoegd");
+            Assert.AreEqual(this.Toegevoegd.Description, category.Description, "Omschrijving komt niet overeen met toegevoegd");
+            Assert.AreEqual(this.Toegevoegd.OrderNumber, category.OrderNumber, "Ordernumber komt niet overeen met toegevoegd");
+            Assert.AreEqual(this.Toegevoegd.MinimumRight, category.MinimumRight, "Minimumright komt niet overeen met toegevoegd");
         }
 
         [TestMethod]
@@ -63,10 +63,10 @@ namespace UnitTest
 
             Forum.Category category = Forum.Category.GetCategory(this.Toegevoegd.Id);
             Assert.IsNotNull(category, "Toegevoegde category niet gevonden.");
-            Assert.AreEqual(category.Name, this.Toegevoegd.Name, "Naam komt niet overeen met gewijzigd");
-            Assert.AreEqual(category.Description, this.Toegevoegd.Description, "Omschrijving komt niet overeen met gewijzigd");
-            Assert.AreEqual(category.OrderNumber, this.Toegevoegd.OrderNumber, "Ordernumber komt niet overeen met gewijzigd");
-            Assert.AreEqual(category.MinimumRight, this.Toegevoegd.MinimumRight, "Minimumright komt niet overeen met gewijzigd");
+            Assert.AreEqual(this.Toegevoegd.Name, category.Name, "Naam komt niet overeen met gewijzigd");
+            Assert.AreEqual(this.Toegevoegd.Description, category.Description, "Omschrijving komt niet overeen met gewijzigd");
+            Assert.AreEqual(this.Toegevoegd.OrderNumber, category.OrderNumber, "Ordernumber komt niet overeen met gewijzigd");
+            Assert.AreEqual(this.Toegevoegd.MinimumRight, category.MinimumRight, "Minimumright komt niet overeen met gewijzigd");
         }
 
         [TestCleanup]
