@@ -79,5 +79,12 @@ namespace Forum
                 {"@topic_id", topic.Id}
             });
         }
+
+        public static DateTime GetLastMarkAsRead(Topic topic)
+        {
+            DataRow row = Database.GetData("SELECT MAX(TR_DATE) LAST FROM TOPIC_READ WHERE TR_TOPIC_ID = " + topic.Id + " AND TR_USER_ID = " + Current.User.Id).Rows[0];
+
+            return row["LAST"] == DBNull.Value ? default(DateTime) : Convert.ToDateTime(row["LAST"]);
+        }
     }
 }
