@@ -37,7 +37,7 @@ namespace Forum
             this.Id = id;
         }
 
-        public User(string username, string password, Right right)
+        public User(string username, string password, Right right = Right.User)
         {
             this.Username = username;
             this.Password = password;
