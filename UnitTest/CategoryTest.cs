@@ -6,7 +6,7 @@ namespace UnitTest
     [TestClass]
     public class CategoryTest
     {
-        private MainCategoryTest maincategorytest = new MainCategoryTest();
+        public MainCategoryTest MainCategoryTest = new MainCategoryTest();
 
         public Forum.Category Toegevoegd
         {
@@ -18,10 +18,10 @@ namespace UnitTest
         [TestMethod]
         public void AddCategory()
         {
-            this.maincategorytest.AddMainCategory();
+            this.MainCategoryTest.AddMainCategory();
 
             this.Toegevoegd = new Forum.Category("Name", "Description", 5, Forum.Right.User);
-            this.maincategorytest.Toegevoegd.AddCategory(this.Toegevoegd);
+            this.MainCategoryTest.Toegevoegd.AddCategory(this.Toegevoegd);
 
             Forum.Category category = Forum.Category.GetCategory(this.Toegevoegd.Id);
             Assert.IsNotNull(category, "Toegevoegde category niet gevonden.");
@@ -30,7 +30,7 @@ namespace UnitTest
         [TestMethod]
         public void FindCategoryInMainCategory()
         {
-            Forum.Category category = this.maincategorytest.Toegevoegd.Categories.Find(a => a.Id == this.Toegevoegd.Id);
+            Forum.Category category = this.MainCategoryTest.Toegevoegd.Categories.Find(a => a.Id == this.Toegevoegd.Id);
             Assert.IsNotNull(category, "Category niet gevonden.");
         }
 
@@ -75,7 +75,7 @@ namespace UnitTest
         {
             this.Toegevoegd.Delete();
             Assert.IsNull(Forum.Category.GetCategory(this.Toegevoegd.Id), "Verwijderde Category gevonden.");
-            this.maincategorytest.DeleteMainCategory();
+            this.MainCategoryTest.DeleteMainCategory();
         }
     }
 }

@@ -7,8 +7,8 @@ namespace UnitTest
     [TestClass]
     public class TopicTest
     {
-        private CategoryTest categorytest = new CategoryTest();
-        private UserTest usertest = new UserTest();
+        public CategoryTest CategoryTest = new CategoryTest();
+        public UserTest UserTest = new UserTest();
 
         public Forum.Topic Toegevoegd
         {
@@ -20,12 +20,12 @@ namespace UnitTest
         [TestMethod]
         public void AddTopic()
         {
-            this.categorytest.AddCategory();
-            this.usertest.AddUser();
+            this.CategoryTest.AddCategory();
+            this.UserTest.AddUser();
 
-            this.Toegevoegd = new Forum.Topic("Titel", this.usertest.Toegevoegd.Id);
-            Forum.Message message = new Forum.Message("Hier de inhoud", DateTime.Now, this.usertest.Toegevoegd.Id);
-            this.categorytest.Toegevoegd.AddTopic(this.Toegevoegd, message);
+            this.Toegevoegd = new Forum.Topic("Titel", this.UserTest.Toegevoegd.Id);
+            Forum.Message message = new Forum.Message("Hier de inhoud", DateTime.Now, this.UserTest.Toegevoegd.Id);
+            this.CategoryTest.Toegevoegd.AddTopic(this.Toegevoegd, message);
 
             Forum.Topic topic = Forum.Topic.GetTopic(this.Toegevoegd.Id);
             Assert.IsNotNull(topic, "Toegevoegde topic niet gevonden.");
@@ -44,7 +44,7 @@ namespace UnitTest
         [TestMethod]
         public void FindTopicInCategory()
         {
-            Forum.Topic topic = this.categorytest.Toegevoegd.Topics.Find(a => a.Id == this.Toegevoegd.Id);
+            Forum.Topic topic = this.CategoryTest.Toegevoegd.Topics.Find(a => a.Id == this.Toegevoegd.Id);
             Assert.IsNotNull(topic, "Topic niet gevonden.");
         }
 
@@ -54,7 +54,7 @@ namespace UnitTest
         {
             this.Toegevoegd.Delete();
             Assert.IsNull(Forum.Topic.GetTopic(this.Toegevoegd.Id), "Verwijderde Topic gevonden.");
-            this.categorytest.DeleteCategory();
+            this.CategoryTest.DeleteCategory();
         }
     }
 }

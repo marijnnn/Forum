@@ -6,8 +6,8 @@ namespace UnitTest
     [TestClass]
     public class MessageTest
     {
-        private TopicTest topictest = new TopicTest();
-        private UserTest usertest = new UserTest();
+        public TopicTest TopicTest = new TopicTest();
+        public UserTest UserTest = new UserTest();
 
         public Forum.Message Toegevoegd
         {
@@ -15,15 +15,18 @@ namespace UnitTest
             set;
         }
 
-        [TestMethod]
+        public MessageTest()
+        {
+            this.TopicTest.AddTopic();
+            this.UserTest.AddUser();
+        }
+
         [TestInitialize]
+        [TestMethod]
         public void AddMessage()
         {
-            this.topictest.AddTopic();
-            this.usertest.AddUser();
-
-            this.Toegevoegd = new Forum.Message("Hier de reactie", DateTime.Now, this.usertest.Toegevoegd.Id);
-            this.topictest.Toegevoegd.AddMessage(this.Toegevoegd);
+            this.Toegevoegd = new Forum.Message("Hier de reactie", DateTime.Now, this.UserTest.Toegevoegd.Id);
+            this.TopicTest.Toegevoegd.AddMessage(this.Toegevoegd);
 
             Forum.Message message = Forum.Message.GetMessage(this.Toegevoegd.Id);
             Assert.IsNotNull(message, "Toegevoegde message niet gevonden.");
@@ -43,7 +46,7 @@ namespace UnitTest
         [TestMethod]
         public void FindMessageInTopic()
         {
-            Forum.Message message = this.topictest.Toegevoegd.Messages.Find(a => a.Id == this.Toegevoegd.Id);
+            Forum.Message message = this.TopicTest.Toegevoegd.Messages.Find(a => a.Id == this.Toegevoegd.Id);
             Assert.IsNotNull(message, "Message niet gevonden.");
         }
 
@@ -52,7 +55,7 @@ namespace UnitTest
         {
             this.Toegevoegd.Delete();
             Assert.IsNull(Forum.Message.GetMessage(this.Toegevoegd.Id), "Verwijderde Message gevonden.");
-            this.topictest.DeleteTopic();
+            this.TopicTest.DeleteTopic();
         }
     }
 }

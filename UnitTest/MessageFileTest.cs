@@ -8,7 +8,7 @@ namespace UnitTest
     [TestClass]
     public class MessageFileTest
     {
-        private MessageTest messagetest = new MessageTest();
+        public MessageTest MessageTest = new MessageTest();
 
         public Forum.MessageFile Toegevoegd
         {
@@ -20,12 +20,12 @@ namespace UnitTest
         [TestMethod]
         public void AddMessageFile()
         {
-            this.messagetest.AddMessage();
+            this.MessageTest.AddMessage();
 
             this.Toegevoegd = new Forum.MessageFile("Name", "Location");
-            this.messagetest.Toegevoegd.AddMessageFile(this.Toegevoegd);
+            this.MessageTest.Toegevoegd.AddMessageFile(this.Toegevoegd);
 
-            List<Forum.MessageFile> messagefiles = Forum.MessageFile.GetMessageFilesByMessage(this.messagetest.Toegevoegd);
+            List<Forum.MessageFile> messagefiles = Forum.MessageFile.GetMessageFilesByMessage(this.MessageTest.Toegevoegd);
             Assert.AreEqual(messagefiles.Count, 1, "Toegevoegde messagefile niet gevonden.");
         }
 
@@ -34,9 +34,9 @@ namespace UnitTest
         public void DeleteMessage()
         {
             this.Toegevoegd.Delete();
-            List<Forum.MessageFile> messagefiles = Forum.MessageFile.GetMessageFilesByMessage(this.messagetest.Toegevoegd);
+            List<Forum.MessageFile> messagefiles = Forum.MessageFile.GetMessageFilesByMessage(this.MessageTest.Toegevoegd);
             Assert.AreEqual(messagefiles.Count, 0, "Verwijderde messagefile gevonden.");
-            this.messagetest.DeleteMessage();
+            this.MessageTest.DeleteMessage();
         }
     }
 }
