@@ -60,5 +60,10 @@ namespace Forum
             });
             topic.Id = id;
         }
+
+        public static void DeleteTopic(Topic topic)
+        {
+            Database.Execute("DELETE FROM TOPIC WHERE TOPIC_ID = " + topic.Id);
+        }
     }
 }

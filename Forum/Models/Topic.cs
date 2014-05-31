@@ -112,7 +112,7 @@ namespace Forum
 
         public void Delete()
         {
-
+            Topic.DeleteTopic(this);
         }
     }
 }
