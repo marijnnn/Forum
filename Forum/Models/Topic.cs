@@ -10,7 +10,7 @@ namespace Forum
         public int Id
         {
             get;
-            set;
+            private set;
         }
 
         public string Name
@@ -22,7 +22,7 @@ namespace Forum
         public int AuthorId
         {
             get;
-            private set;
+            set;
         }
 
         private User author;
