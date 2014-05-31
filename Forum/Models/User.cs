@@ -50,6 +50,7 @@ namespace Forum
 
             if (user != null && user.Password == password)
             {
+                Current.User = user;
                 return true;
             }
 
