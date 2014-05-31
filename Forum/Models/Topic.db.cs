@@ -63,6 +63,13 @@ namespace Forum
 
         public static void DeleteTopic(Topic topic)
         {
+            // Eerst alle berichten binnen Topic verwijderen.
+            foreach (Message message in topic.Messages)
+            {
+                message.Delete();
+            }
+
+            // Dan topic zelf verwijderen.
             Database.Execute("DELETE FROM TOPIC WHERE TOPIC_ID = " + topic.Id);
         }
     }
