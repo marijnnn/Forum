@@ -37,5 +37,10 @@ namespace Forum
             Database.Execute("UPDATE CATEGORY SET CATEGORY_LASTMESSAGE_ID = " + id + " WHERE CATEGORY_ID = " + message.Topic.CategoryId);
             message.Id = id;
         }
+
+        public static void DeleteMessage(Message message)
+        {
+            Database.Execute("DELETE FROM MESSAGE WHERE MESSAGE_ID = " + message.Id);
+        }
     }
 }
