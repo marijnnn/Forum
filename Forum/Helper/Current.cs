@@ -15,8 +15,22 @@ namespace Forum
 
         public static Right Right
         {
-            get;
-            set;
+            get
+            {
+                if (User == null)
+                {
+                    return Right.Guest;
+                }
+                else
+                {
+                    return User.Right;
+                }
+            }
+        }
+
+        public static void Logout()
+        {
+            User = null;
         }
     }
 }
