@@ -15,12 +15,6 @@ namespace Forum
             }
         }
 
-        public static DateTime LastMarkAsRead
-        {
-            get;
-            set;
-        }
-
         public static void AddMainCategory(MainCategory maincategory)
         {
             MainCategory.AddMainCategory(maincategory);

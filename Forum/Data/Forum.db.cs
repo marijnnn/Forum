@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace Forum
 {
@@ -13,6 +14,13 @@ namespace Forum
             {
                 {"@user_id", Current.User.Id}
             });
+        }
+
+        public static DateTime GetLastMarkAsRead()
+        {
+            DataRow row = Database.GetData("SELECT MAX(FR_DATE) LAST FROM FORUM_READ WHERE FR_USER_ID = " + Current.User.Id).Rows[0];
+
+            return row["LAST"] == DBNull.Value ? default(DateTime) : Convert.ToDateTime(row["LAST"]);
         }
     }
 }
