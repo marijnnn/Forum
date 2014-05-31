@@ -10,7 +10,7 @@ namespace Forum
         public int Id
         {
             get;
-            set;
+            private set;
         }
 
         public string Name
@@ -28,18 +28,18 @@ namespace Forum
         public MessageFile(int id, string name, string location)
             : this(name, location)
         {
-
+            this.Id = id;
         }
 
         public MessageFile(string name, string location)
         {
-
+            this.Name = name;
+            this.Location = location;
         }
 
         public void Delete()
         {
 
         }
-
     }
 }
