@@ -95,6 +95,7 @@ namespace Forum
 
         public void AddTopic(Topic topic, Message message)
         {
+            topic.CategoryId = this.Id;
             Topic.AddTopic(this, topic);
             topic.AddMessage(message);
         }

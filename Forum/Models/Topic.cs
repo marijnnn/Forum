@@ -71,17 +71,17 @@ namespace Forum
         }
 
         public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
-            : this(name, authorid, categoryid)
+            : this(name, authorid)
         {
             this.Id = id;
             this.LastMessageId = lastmessageid;
+            this.CategoryId = categoryid;
         }
 
-        public Topic(string name, int authorid, int categoryid)
+        public Topic(string name, int authorid)
         {
             this.Name = name;
             this.AuthorId = authorid;
-            this.CategoryId = categoryid;
         }
 
         public List<Message> GetMessages(int page, int count = 10)
