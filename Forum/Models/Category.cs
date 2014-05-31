@@ -72,10 +72,21 @@ namespace Forum
             set;
         }
 
+        private int unreadtopiccount;
         public int UnreadTopicCount
         {
-            get;
-            private set;
+            get
+            {
+                if (this.unreadtopiccount != default(int))
+                {
+                    return this.unreadtopiccount;
+                }
+                return this.unreadtopiccount = Category.GetUnreadTopicCount(this);
+            }
+            set
+            {
+                this.unreadtopiccount = value;
+            }
         }
 
         public List<Topic> Topics
@@ -101,7 +112,6 @@ namespace Forum
             this.Name = name;
             this.Description = description;
             this.MinimumRight = minimumright;
-            this.UnreadTopicCount = 0;
         }
 
         public void MarkAsRead()
@@ -136,7 +146,7 @@ namespace Forum
             {
                 return true;
             }
-            else if (this.UnreadTopicCount != 0)
+            else if (this.UnreadTopicCount == 0)
             {
                 return true;
             }
