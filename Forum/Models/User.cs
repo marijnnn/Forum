@@ -10,7 +10,7 @@ namespace Forum
         public int Id
         {
             get;
-            set;
+            private set;
         }
 
         public string Username
