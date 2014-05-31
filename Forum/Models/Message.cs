@@ -50,7 +50,7 @@ namespace Forum
         public int TopicId
         {
             get;
-            private set;
+            set;
         }
 
         private Topic topic;
@@ -94,6 +94,19 @@ namespace Forum
 
         public bool IsRead()
         {
+            if (this.Date < Forum.GetLastMarkAsRead())
+            {
+                return true;
+            }
+            else if (this.Date < Category.GetLastMarkAsRead(this.topic.Category))
+            {
+                return true;
+            }
+            else if (this.Date < Topic.GetLastMarkAsRead(this.topic))
+            {
+                return true;
+            }
+
             return false;
         }
 
