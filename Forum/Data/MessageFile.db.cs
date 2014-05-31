@@ -63,5 +63,10 @@ namespace Forum
             });
             messagefile.Id = id;
         }
+
+        public static void DeleteMessageFile(MessageFile messagefile)
+        {
+            Database.Execute("DELETE FROM MESSAGEFILE WHERE MESSAGEFILE_ID = " + messagefile.Id);
+        }
     }
 }

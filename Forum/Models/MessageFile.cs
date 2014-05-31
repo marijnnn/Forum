@@ -39,7 +39,7 @@ namespace Forum
 
         public void Delete()
         {
-
+            MessageFile.DeleteMessageFile(this);
         }
     }
 }
