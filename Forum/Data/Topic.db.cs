@@ -80,7 +80,7 @@ namespace Forum
             });
         }
 
-        public static DateTime GetLastMarkAsRead(Topic topic)
+        public static DateTime GetLastRead(Topic topic)
         {
             DataRow row = Database.GetData("SELECT MAX(TR_DATE) LAST FROM TOPIC_READ WHERE TR_TOPIC_ID = " + topic.Id + " AND TR_USER_ID = " + Current.User.Id).Rows[0];
 

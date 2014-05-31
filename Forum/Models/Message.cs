@@ -102,7 +102,7 @@ namespace Forum
             {
                 return true;
             }
-            else if (this.Date < Topic.GetLastMarkAsRead(this.topic))
+            else if (this.Date < Topic.GetLastRead(this.topic))
             {
                 return true;
             }

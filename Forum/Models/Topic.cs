@@ -136,7 +136,7 @@ namespace Forum
             {
                 return true;
             }
-            else if (this.LastMessage.Date < Topic.GetLastMarkAsRead(this))
+            else if (this.LastMessage.Date < Topic.GetLastRead(this))
             {
                 return true;
             }
