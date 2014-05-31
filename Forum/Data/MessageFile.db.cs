@@ -50,5 +50,18 @@ namespace Forum
 
             return messagefiles;
         }
+
+        public static void AddMessageFile(Message message, MessageFile messagefile)
+        {
+            int id = Database.GetSequence("SEQ_MESSAGEFILE");
+            Database.Execute("INSERT INTO MESSAGEFILE (MESSAGEFILE_ID, MESSAGEFILE_NAME, MESSAGEFILE_LOCATION, MESSAGEFILE_MESSAGE_ID) VALUES (@id, @name, @location, @message_id)", new Dictionary<string, object>()
+            {
+                {"@id", id},
+                {"@name", messagefile.Name},
+                {"@location", messagefile.Location},
+                {"@message_id", message.Id}
+            });
+            messagefile.Id = id;
+        }
     }
 }

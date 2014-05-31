@@ -117,7 +117,7 @@ namespace Forum
 
         public void AddMessageFile(MessageFile messagefile)
         {
-
+            MessageFile.AddMessageFile(this, messagefile);
         }
     }
 }
