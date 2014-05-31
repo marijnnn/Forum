@@ -12,7 +12,7 @@ namespace Forum
             return (Message)null;
         }
 
-        public static List<Message> GetMessagesByTopic(Topic topic, int page, int count = 10)
+        public static List<Message> GetMessagesByTopic(Topic topic)
         {
             return (List<Message>)null;
         }

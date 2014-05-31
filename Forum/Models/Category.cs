@@ -61,6 +61,14 @@ namespace Forum
             private set;
         }
 
+        public List<Topic> Topics
+        {
+            get
+            {
+                return Topic.GetTopicByCategory(this);
+            }
+        }
+
         public Category(int id, string name, string description, int ordernumber, int topiccount, int messagecount, int lastmessageid, Right minimumright)
             : this(name, description, ordernumber, minimumright)
         {
@@ -81,11 +89,6 @@ namespace Forum
         public void MarkAsRead()
         {
 
-        }
-
-        public List<Topic> GetTopics(int page, int count = 30)
-        {
-            return Topic.GetTopicByCategory(this, page, count);
         }
 
         public bool HasAccess()
