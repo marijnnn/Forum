@@ -105,7 +105,7 @@ namespace Forum
 
         public void Read()
         {
-
+            Topic.MarkAsRead(this);
         }
 
         public bool IsRead()

@@ -70,5 +70,14 @@ namespace Forum
             Database.Execute("UPDATE CATEGORY SET CATEGORY_TOPICCOUNT = (SELECT COUNT(1) FROM TOPIC WHERE TOPIC_CATEGORY_ID = CATEGORY_ID), CATEGORY_MESSAGECOUNT = (SELECT COUNT(1) FROM MESSAGE WHERE MESSAGE_TOPIC_ID IN (SELECT TOPIC_ID FROM TOPIC WHERE TOPIC_CATEGORY_ID = CATEGORY_ID)) - CATEGORY_TOPICCOUNT, CATEGORY_LASTMESSAGE_ID = (SELECT MAX(MESSAGE_ID) FROM MESSAGE WHERE MESSAGE_TOPIC_ID IN (SELECT TOPIC_ID FROM TOPIC WHERE TOPIC_CATEGORY_ID = CATEGORY_ID)) WHERE CATEGORY_ID = " + topic.CategoryId);
             Database.Execute("UPDATE TOPIC SET TOPIC_LASTMESSAGE_ID = (SELECT MAX(MESSAGE_ID) FROM MESSAGE WHERE MESSAGE_TOPIC_ID = TOPIC_ID) WHERE TOPIC_ID = " + topic.Id);
         }
+
+        public static void MarkAsRead(Topic topic)
+        {
+            Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (@user_id, @topic_id, sysdate)", new Dictionary<string, object>()
+            {
+                {"@user_id", Current.User.Id},
+                {"@topic_id", topic.Id}
+            });
+        }
     }
 }
