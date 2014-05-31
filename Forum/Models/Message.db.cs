@@ -34,7 +34,7 @@ namespace Forum
                 {"@topic_id", message.TopicId}
             });
             Database.Execute("UPDATE TOPIC SET TOPIC_LASTMESSAGE_ID = " + id + " WHERE TOPIC_ID = " + message.TopicId);
-            Database.Execute("UPDATE CATEGORY SET CATEGORY_LASTMESSAGE_ID = " + id + " WHERE CATEGORY_ID = " + message.Topic.CategoryId);
+            Database.Execute("UPDATE CATEGORY SET CATEGORY_MESSAGECOUNT = CATEGORY_MESSAGECOUNT + 1, CATEGORY_LASTMESSAGE_ID = " + id + " WHERE CATEGORY_ID = " + message.Topic.CategoryId);
             message.Id = id;
         }
 

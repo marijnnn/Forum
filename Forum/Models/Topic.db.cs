@@ -58,6 +58,7 @@ namespace Forum
                 {"@author_id", topic.AuthorId},
                 {"@category_id", category.Id}
             });
+            Database.Execute("UPDATE CATEGORY SET CATEGORY_TOPICCOUNT = CATEGORY_TOPICCOUNT + 1 WHERE CATEGORY_ID = " + category.Id);
             topic.Id = id;
         }
 
