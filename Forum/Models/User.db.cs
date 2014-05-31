@@ -10,7 +10,7 @@ namespace Forum
     {
         private static User rowToUser(DataRow row)
         {
-            return new User(row["USER_NAME"].ToString(), row["USER_PASSWORD"].ToString(), (Right)Enum.Parse(typeof(Right), row["CATEGORY_MINIMUMRIGHT"].ToString()));
+            return new User(Convert.ToInt32(row["USER_ID"]), row["USER_NAME"].ToString(), row["USER_PASSWORD"].ToString(), (Right)Enum.Parse(typeof(Right), row["USER_RIGHT"].ToString()));
         }
 
         public static User GetUser(int id)
