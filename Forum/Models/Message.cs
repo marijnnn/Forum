@@ -90,7 +90,7 @@ namespace Forum
 
         public void Delete()
         {
-            
+            Message.DeleteMessage(this);
         }
 
         public void AddMessageFile(MessageFile messagefile)
