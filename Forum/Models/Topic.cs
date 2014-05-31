@@ -96,7 +96,8 @@ namespace Forum
 
         public void AddMessage(Message message)
         {
-
+            message.TopicId = this.Id;
+            Message.AddMessage(message);
         }
 
         public void Read()
