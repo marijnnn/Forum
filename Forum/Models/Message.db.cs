@@ -39,7 +39,7 @@ namespace Forum
                 messages.Add(rowToMessage(row));
             }
 
-            return null;
+            return messages;
         }
 
         public static List<Message> SearchMessage(string keyword)
