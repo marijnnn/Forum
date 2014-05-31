@@ -2,19 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace Forum
 {
     public partial class User
     {
+        private static User rowToUser(DataRow row)
+        {
+            return new User(row["USER_NAME"].ToString(), row["USER_PASSWORD"].ToString(), (Right)Enum.Parse(typeof(Right), row["CATEGORY_MINIMUMRIGHT"].ToString()));
+        }
+
         public static User GetUser(int id)
         {
-            return (User)null;
+            foreach (DataRow row in Database.GetData("SELECT * FROM USERS").Rows)
+            {
+                return rowToUser(row);
+            }
+
+            return null;
         }
 
         public static User GetUser(string username)
         {
-            return (User)null;
+            foreach (DataRow row in Database.GetData("SELECT * FROM USERS WHERE USER_NAME = @name", new Dictionary<string, object>()
+            {
+                {"@name", username}
+            }).Rows)
+            {
+                return rowToUser(row);
+            }
+
+            return null;
         }
 
         public static void AddUser(User user)
