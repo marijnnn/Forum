@@ -2,19 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace Forum
 {
     public partial class Message
     {
+        public static Message rowToMessage(DataRow row)
+        {
+            return new Message(Convert.ToInt32(row["MESSAGE_ID"]), row["MESSAGE_TEXT"].ToString(), Convert.ToDateTime(row["MESSAGE_DATE"]), Convert.ToInt32(row["MESSAGE_AUTHOR_ID"]), Convert.ToInt32(row["MESSAGE_TOPIC_ID"]))
+            {
+                Author = User.rowToUser(row)
+            };
+        }
+        private static DataTable getMessagesByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
+        {
+            return Database.GetData("SELECT MESSAGE.*, USERS.* FROM MESSAGE JOIN USERS ON MESSAGE_AUTHOR_ID = USER_ID" + (where != "" ? " WHERE " + where : ""), parameters);
+        }
+
         public static Message GetMessage(int id)
         {
-            return (Message)null;
+            foreach (DataRow row in getMessagesByWhere("MESSAGE_ID = " + id).Rows)
+            {
+                return rowToMessage(row);
+            }
+
+            return null;
         }
 
         public static List<Message> GetMessagesByTopic(Topic topic)
         {
-            return (List<Message>)null;
+            List<Message> messages = new List<Message>();
+
+            foreach (DataRow row in getMessagesByWhere("MESSAGE_TOPIC_ID = " + topic.Id).Rows)
+            {
+                messages.Add(rowToMessage(row));
+            }
+
+            return null;
         }
 
         public static List<Message> SearchMessage(string keyword)

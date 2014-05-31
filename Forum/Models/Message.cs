@@ -24,11 +24,20 @@ namespace Forum
             set;
         }
 
+        private User author;
         public User Author
         {
             get
             {
-                return User.GetUser(this.AuthorId);
+                if (this.author != null)
+                {
+                    return this.author;
+                }
+                return this.author = User.GetUser(this.AuthorId);
+            }
+            set
+            {
+                this.author = value;
             }
         }
 
