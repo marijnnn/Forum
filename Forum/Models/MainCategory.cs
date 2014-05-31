@@ -25,11 +25,20 @@ namespace Forum
             set;
         }
 
+        public List<Category> categories;
         public List<Category> Categories
         {
             get
             {
-                return Category.GetCategoriesByMainCategory(this);
+                if (this.categories != null)
+                {
+                    return this.categories;
+                }
+                return this.categories = Category.GetCategoriesByMainCategory(this);
+            }
+            set
+            {
+                this.categories = value;
             }
         }
 
