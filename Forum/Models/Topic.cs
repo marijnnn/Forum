@@ -94,7 +94,7 @@ namespace Forum
 
         public bool HasAccess()
         {
-            return false;
+            return this.Category.HasAccess();
         }
 
         public void AddMessage(Message message)

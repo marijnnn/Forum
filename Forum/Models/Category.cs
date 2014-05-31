@@ -101,6 +101,11 @@ namespace Forum
 
         public bool HasAccess()
         {
+            if (this.MinimumRight <= Current.Right)
+            {
+                return true;
+            }
+
             return false;
         }
 
