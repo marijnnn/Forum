@@ -24,7 +24,7 @@ namespace Forum
             {
                 {"@id", id},
                 {"@name", user.Username},
-                {"@password", user.password}
+                {"@password", user.Password}
             });
             user.Id = id;
         }
