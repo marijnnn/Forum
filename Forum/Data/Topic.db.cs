@@ -75,6 +75,7 @@ namespace Forum
         {
             if (Current.IsLoggedIn)
             {
+                Database.Execute("DELETE FROM TOPIC_READ WHERE TR_USER_ID = " + Current.Account.Id + " AND TR_TOPIC_ID = " + topic.Id);
                 Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (@user_id, @topic_id, sysdate)", new Dictionary<string, object>()
                 {
                     {"@user_id", Current.Account.Id},

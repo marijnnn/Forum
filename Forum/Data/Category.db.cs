@@ -102,6 +102,7 @@ namespace Forum
 
         public static void MarkAsRead(Category category)
         {
+            Database.Execute("DELETE FROM CATEGORY_READ WHERE CR_USER_ID = " + Current.Account.Id + " AND CR_CATEGORY_ID = " + category.Id);
             Database.Execute("INSERT INTO CATEGORY_READ (CR_USER_ID, CR_CATEGORY_ID, CR_DATE) VALUES (@user_id, @category_id, sysdate)", new Dictionary<string, object>()
             {
                 {"@user_id", Current.Account.Id},
