@@ -24,7 +24,7 @@ namespace Forum
 
         private static DataTable getTopicsByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
         {
-            return Database.GetData("SELECT TOPIC.*, USERS.* FROM TOPIC JOIN USERS ON TOPIC_AUTHOR_ID = USER_ID" + (where != "" ? " WHERE " + where : ""), parameters);
+            return Database.GetData("SELECT TOPIC.*, USERS.* FROM TOPIC JOIN USERS ON TOPIC_AUTHOR_ID = USER_ID" + (where != "" ? " WHERE " + where : "") + " ORDER BY TOPIC_LASTMESSAGE_ID DESC", parameters);
         }
 
         public static Topic GetTopic(int id)
