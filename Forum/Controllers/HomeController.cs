@@ -16,5 +16,16 @@ namespace Forum.Controllers
             return View(Forum.MainCategories);
         }
 
+        public ActionResult MarkAsRead()
+        {
+            if (!Current.IsLoggedIn)
+            {
+                return View("NoAccess");
+            }
+
+            Forum.MarkAsRead();
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

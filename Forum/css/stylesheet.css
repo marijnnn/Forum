@@ -1,3 +1,6 @@
 .forum-categorie .glyphicon {
     font-size: 36px;
 }
+.forum-topic a {
+    display: block;
+}

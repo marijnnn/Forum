@@ -68,5 +68,23 @@ namespace Forum.Controllers
 
             return View(model);
         }
+
+        public ActionResult MarkAsRead(int id)
+        {
+            Category category = Category.GetCategory(id);
+
+            if (category == null)
+            {
+                return View("NotFound");
+            }
+            else if (!Current.IsLoggedIn || !category.HasAccess())
+            {
+                return View("NoAccess");
+            }
+
+            category.MarkAsRead();
+
+            return RedirectToAction("Index", "Category", new { id = category.Id });
+        }
     }
 }
