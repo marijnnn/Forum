@@ -4,3 +4,6 @@
 .forum-topic a {
     display: block;
 }
+a .glyphicon {
+    color: #333333;
+}

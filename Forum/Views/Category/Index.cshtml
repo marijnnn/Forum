@@ -12,7 +12,7 @@
     <li class="active">@Html.DisplayFor(modelItem => Model.Name)</li>
 </ol>
 
-<p>@Html.ActionLink("Klik hier om een nieuw topic toe te voegen.", "Add", new { id=ViewData["CategoryId"] })</p>
+<p><a href="@Url.Action("Add", new { id = ViewData["CategoryId"] })"><span class="glyphicon glyphicon-plus"></span> Klik hier om een nieuw topic toe te voegen.</a></p>
 
 @if (Model.Topics.Count == 0)
 {
@@ -22,11 +22,11 @@ else
 {
     var grid = new WebGrid(Model.Topics);
     @grid.GetHtml(tableStyle: "table forum-topic", columns: grid.Columns(
-            grid.Column("Topic", format: @<text>@if(item.IsRead){<span class="glyphicon glyphicon-folder-close"></span>}else{<span class="glyphicon glyphicon-folder-open"></span>} @Html.ActionLink((string)item.Name, "Index", "Topic", new { id = item.Id }, null) </text>),
+            grid.Column("Topic", format: @<a href="@Url.Action("Index", "Topic", new { id = item.Id }, null)">@if(item.IsRead){<span class="glyphicon glyphicon-folder-close"></span>}else{<span class="glyphicon glyphicon-folder-open"></span>} @item.Name</a>),
             grid.Column("Auteur", format: (item) => item.Author.Username),
             grid.Column("MessageCount", "Reacties"),
             grid.Column("Laatste post", format: (item) => item.LastMessage.Date)
         ))
-    
+
     <p>@Html.ActionLink("Markeer deze categorie als gelezen", "MarkAsRead", new { id=ViewData["CategoryId"] })</p>
 }
