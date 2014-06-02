@@ -86,14 +86,9 @@ namespace Forum
 
         public static DateTime GetLastRead(Topic topic)
         {
-            if (!Current.IsLoggedIn)
-            {
-                return DateTime.MaxValue;
-            }
-
             DataRow row = Database.GetData("SELECT MAX(TR_DATE) LAST FROM TOPIC_READ WHERE TR_TOPIC_ID = " + topic.Id + " AND TR_USER_ID = " + Current.Account.Id).Rows[0];
 
-            return row["LAST"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["LAST"]);
+            return row["LAST"] == DBNull.Value ? default(DateTime) : Convert.ToDateTime(row["LAST"]);
         }
     }
 }

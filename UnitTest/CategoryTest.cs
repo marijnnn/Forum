@@ -48,7 +48,7 @@ namespace UnitTest
         [TestMethod]
         public void FindCategoryInList()
         {
-            Forum.Category category = Forum.Category.GetCategoriesByMainCategories().Find(a => a.Id == this.Toegevoegd.Id);
+            Forum.Category category = Forum.Category.GetCategories().Find(a => a.Id == this.Toegevoegd.Id);
             Assert.IsNotNull(category, "Category niet gevonden.");
         }
 
