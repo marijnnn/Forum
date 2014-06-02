@@ -20,7 +20,7 @@
             <b>@Html.DisplayFor(modelItem => message.Author.Username)</b> om @Html.DisplayFor(modelItem => message.Date)
         </div>
         <div class="panel-body">
-            @Html.DisplayFor(modelItem => message.Text)
+            @Html.Raw(Html.Encode(message.Text).Replace(Environment.NewLine, "<br />"))
         </div>
     </div>    
 }
