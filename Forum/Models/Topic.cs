@@ -98,6 +98,23 @@ namespace Forum
             }
         }
 
+        private int messagecount;
+        public int MessageCount
+        {
+            get
+            {
+                if (!messagecount.Equals(default(int)))
+                {
+                    return this.messagecount;
+                }
+                return this.messagecount = (this.Messages.Count - 1);
+            }
+            set
+            {
+                this.messagecount = value;
+            }
+        }
+
         public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
             : this(name, authorid)
         {
