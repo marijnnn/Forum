@@ -8,7 +8,7 @@
 <h2>Index</h2>
 @foreach (var maincatory in Model)
 {
-<div class="panel panel-default">
+<div class="panel panel-default forum-categorie">
     <div class="panel-heading">@Html.DisplayFor(modelItem => maincatory.Name)</div>
 
     <table class="table">
@@ -16,13 +16,13 @@
             <th colspan="2">
                 Forum
             </th>
-            <th>
+            <th class="text-center">
                 Topics
             </th>
-            <th>
+            <th class="text-center">
                 Berichten
             </th>
-            <th>
+            <th class="text-center">
                 Laatst bericht
             </th>
         </tr>
@@ -30,21 +30,23 @@
         @foreach (var category in maincatory.Categories)
         {
         <tr>
-            <th>
+            <td class="col-xs-1 text-center">
+                <span class="glyphicon glyphicon-folder-close"></span>
                 @Html.DisplayFor(modelItem => category.UnreadTopicCount)
-            </th>
-            <th>
-                @Html.DisplayFor(modelItem => category.Name)
-            </th>
-            <th>
+            </td>
+            <td class="col-xs-7">
+                <b>@Html.DisplayFor(modelItem => category.Name)</b><br />
+                <i>@Html.DisplayFor(modelItem => category.Description)</i>
+            </td>
+            <td class="col-xs-1 text-center">
                 @Html.DisplayFor(modelItem => category.TopicCount)
-            </th>
-            <th>
+            </td>
+            <td class="col-xs-1 text-center">
                 @Html.DisplayFor(modelItem => category.MessageCount)
-            </th>
-            <th>
+            </td>
+            <td class="col-xs-2 text-center">
                 @Html.DisplayFor(modelItem => category.LastMessage.Date)
-            </th>
+            </td>
         </tr>
         }
     </table>

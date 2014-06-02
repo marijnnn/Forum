@@ -57,9 +57,16 @@ namespace Forum
             return false;
         }
 
-        public static void Register(Account account)
+        public static bool Register(Account account)
         {
+            if (Account.GetAccount(account.Username) != null)
+            {
+                return false;
+            } 
+
             Account.AddAccount(account);
+
+            return true;
         }
     }
 }

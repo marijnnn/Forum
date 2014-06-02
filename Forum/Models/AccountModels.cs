@@ -20,10 +20,19 @@ namespace Forum
 
         [Required(ErrorMessage = "Een wachtwoord is verplicht.")]
         [DisplayName("Wachtwoord")]
+        [DataType(DataType.Password)]
         public string Password
         {
             get;
             set;
         }
+    }
+
+    public class RegisterModel : LoginModel
+    {
+        [DataType(DataType.Password)]
+        [Display(Name = "Bevestig wachtwoord")]
+        [Compare("Password", ErrorMessage = "De wachtwoorden komen niet overeen.")]
+        public string ConfirmPassword { get; set; }
     }
 }

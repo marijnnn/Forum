@@ -1,0 +1,42 @@
+﻿@model Forum.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+
+@Html.ValidationSummary(true, "Het aanmelden is mislukt. Probeer het opnieuw!", new { @class = "alert alert-danger" })
+
+@using (Html.BeginForm())
+{
+    <form class="form-horizontal" role="form">
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Username, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Username)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-4">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-4">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-default">Aanmelden</button>
+            </div>
+        </div>
+    </form>
+}

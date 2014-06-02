@@ -42,5 +42,27 @@ namespace Forum.Controllers
             return View(model);
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Account.Register(new Account(model.Username, model.Password)))
+                {
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "De gebruikersnaam en/of wachtwoord is incorrect.");
+                }
+            }
+
+            return View(model);
+        }
     }
 }
