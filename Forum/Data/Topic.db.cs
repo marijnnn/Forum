@@ -73,11 +73,14 @@ namespace Forum
 
         public static void MarkAsRead(Topic topic)
         {
-            Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (@user_id, @topic_id, sysdate)", new Dictionary<string, object>()
+            if (Current.IsLoggedIn)
             {
-                {"@user_id", Current.Account.Id},
-                {"@topic_id", topic.Id}
-            });
+                Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (@user_id, @topic_id, sysdate)", new Dictionary<string, object>()
+                {
+                    {"@user_id", Current.Account.Id},
+                    {"@topic_id", topic.Id}
+                });
+            }
         }
 
         public static DateTime GetLastRead(Topic topic)

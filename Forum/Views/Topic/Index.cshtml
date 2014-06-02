@@ -1,0 +1,22 @@
+﻿@model Forum.Topic
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@foreach (var message in Model.Messages)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>@Html.DisplayFor(modelItem => message.Author.Username)</b> om @Html.DisplayFor(modelItem => message.Date)
+        </div>
+        <div class="panel-body">
+            @Html.DisplayFor(modelItem => message.Text)
+        </div>
+    </div>    
+}
+
+@Html.Action("Add", new { id = Model.Id })
