@@ -1,0 +1,35 @@
+﻿@model Forum.TopicModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Topic toevoegen</h2>
+
+@Html.ValidationSummary(true, "Het is niet gelukt om het topic aan te maken. Probeer het opnieuw!", new { @class = "alert alert-danger" })
+
+@using (Html.BeginForm())
+{
+    <form class="form-horizontal" role="form">
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Title, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Text, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-4">
+                @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Text)
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-default">Toevoegen!</button>
+            </div>
+        </div>
+    </form>
+}

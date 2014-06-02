@@ -1,0 +1,18 @@
+﻿@model Forum.Category
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@{
+    var grid = new WebGrid(Model.Topics);
+}
+@grid.GetHtml(tableStyle: "table", columns: grid.Columns(
+    grid.Column("Topic", "Name"),
+    grid.Column("Auteur", "Author.Name"),
+    grid.Column("Reacties", "LastMessageId"), 
+    grid.Column("Laatste post", format: (item) => item.LastMessage.Date)
+))

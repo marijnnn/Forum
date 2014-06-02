@@ -42,15 +42,15 @@
             <td class="col-xs-1 text-center">
                 @if (category.UnreadTopicCount == 0)
                 {
-                    <span class="glyphicon glyphicon-folder-close"></span>
+                    <span class="glyphicon glyphicon-folder-close" title="Geen ongelezen topics"></span>
                 }
                 else
                 {
-                    <span class="glyphicon glyphicon-folder-open" title="@category.UnreadTopicCount ongelezen berichten"></span>
+                    <span class="glyphicon glyphicon-folder-open" title="@category.UnreadTopicCount ongelezen topics"></span>
                 }
             </td>
             <td class="col-xs-7">
-                <b>@Html.DisplayFor(modelItem => category.Name)</b><br />
+                <b>@Html.ActionLink(category.Name, "Index", "Category", new { id=category.Id }, null)</b><br />
                 <i>@Html.DisplayFor(modelItem => category.Description)</i>
             </td>
             <td class="col-xs-1 text-center">
@@ -66,9 +66,10 @@
                 }
                 else
                 {
-                    @Html.DisplayText("In") @Html.DisplayFor(modelItem => category.LastMessage.Topic.Name)
-                    @Html.DisplayText("door") @Html.DisplayFor(modelItem => category.LastMessage.Author.Username)
-                    @Html.DisplayText("op") @Html.DisplayFor(modelItem => category.LastMessage.Date)
+                    <a href="@Url.Action("Index", "Topic", new { id=category.LastMessage.TopicId })#last">
+                        @Html.DisplayText("Door") @Html.DisplayFor(modelItem => category.LastMessage.Author.Username) @Html.Raw("<br />")
+                        @Html.DisplayText("op") @Html.DisplayFor(modelItem => category.LastMessage.Date) 
+                    </a>
                 }
             </td>
         </tr>
