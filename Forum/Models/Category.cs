@@ -97,6 +97,27 @@ namespace Forum
             }
         }
 
+        public bool IsRead
+        {
+            get
+            {
+                if (this.LastMessage != null && this.LastMessage.Date < Forum.GetLastMarkAsRead())
+                {
+                    return true;
+                }
+                else if (this.LastMessage != null && this.LastMessage.Date < Category.GetLastMarkAsRead(this))
+                {
+                    return true;
+                }
+                else if (this.UnreadTopicCount == 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
         public Category(int id, string name, string description, int ordernumber, int topiccount, int messagecount, int lastmessageid, Right minimumright)
             : this(name, description, ordernumber, minimumright)
         {
@@ -134,24 +155,6 @@ namespace Forum
             topic.CategoryId = this.Id;
             Topic.AddTopic(this, topic);
             topic.AddMessage(message);
-        }
-
-        public bool IsRead()
-        {
-            if (this.LastMessage != null && this.LastMessage.Date < Forum.GetLastMarkAsRead())
-            {
-                return true;
-            }
-            else if (this.LastMessage != null && this.LastMessage.Date < Category.GetLastMarkAsRead(this))
-            {
-                return true;
-            }
-            else if (this.UnreadTopicCount == 0)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public void Delete()
