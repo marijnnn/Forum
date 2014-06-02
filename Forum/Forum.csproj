@@ -192,6 +192,9 @@
   <ItemGroup>
     <Content Include="Views\Account\Menu.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\NoAccess.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

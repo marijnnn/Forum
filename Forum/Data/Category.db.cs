@@ -22,13 +22,20 @@ namespace Forum
             );
         }
 
-        public static List<Category> GetCategories()
+        public static Dictionary<int, List<Category>> GetCategoriesByMainCategories()
         {
-            List<Category> categories = new List<Category>();
+            Dictionary<int, List<Category>> categories = new Dictionary<int, List<Category>>();
 
             foreach (DataRow row in Database.GetData("SELECT * FROM CATEGORY").Rows)
             {
-                categories.Add(rowToCategory(row));
+                int maincategory_id = Convert.ToInt32(row["CATEGORY_MAINCATEGORY_ID"]);
+
+                if (!categories.ContainsKey(maincategory_id))
+                {
+                    categories.Add(maincategory_id, new List<Category>());
+                }
+
+                categories[maincategory_id].Add(rowToCategory(row));
             }
 
             return categories;

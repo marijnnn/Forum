@@ -31,8 +31,14 @@
         {
         <tr>
             <td class="col-xs-1 text-center">
-                <span class="glyphicon glyphicon-folder-close"></span>
-                @Html.DisplayFor(modelItem => category.UnreadTopicCount)
+                @if (category.UnreadTopicCount == 0)
+                {
+                    <span class="glyphicon glyphicon-folder-close"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                }
             </td>
             <td class="col-xs-7">
                 <b>@Html.DisplayFor(modelItem => category.Name)</b><br />

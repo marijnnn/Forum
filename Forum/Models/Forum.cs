@@ -11,6 +11,24 @@ namespace Forum
         {
             get
             {
+                Dictionary<int, MainCategory> maincategories = MainCategory.GetMainCategories().ToDictionary(v => v.Id, v => v);
+
+                foreach (KeyValuePair<int, MainCategory> pair in maincategories)
+                {
+                    pair.Value.Categories = new List<Category>();
+                }
+
+                foreach (KeyValuePair<int, List<Category>> pair in Category.GetCategoriesByMainCategories())
+                {
+                    foreach (Category category in pair.Value)
+                    {
+                        if (category.HasAccess())
+                        {
+                            maincategories[pair.Key].Categories.Add(category);
+                        }
+                    }
+                }
+
                 return MainCategory.GetMainCategories();
             }
         }
