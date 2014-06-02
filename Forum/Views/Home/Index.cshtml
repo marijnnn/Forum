@@ -27,6 +27,15 @@
             </th>
         </tr>
 
+        @if (maincatory.Categories.Count == 0)
+        {
+            <tr>
+                <td colspan="5">
+                    Er zijn geen categoriën gevonden.
+                </td>
+            </tr>
+        }
+
         @foreach (var category in maincatory.Categories)
         {
         <tr>
@@ -37,7 +46,7 @@
                 }
                 else
                 {
-                    <span class="glyphicon glyphicon-folder-open"></span>
+                    <span class="glyphicon glyphicon-folder-open" title="@category.UnreadTopicCount ongelezen berichten"></span>
                 }
             </td>
             <td class="col-xs-7">
@@ -51,7 +60,16 @@
                 @Html.DisplayFor(modelItem => category.MessageCount)
             </td>
             <td class="col-xs-2 text-center">
-                @Html.DisplayFor(modelItem => category.LastMessage.Date)
+                @if (category.LastMessage == null)
+                {
+                    <i>Geen laatste bericht</i>
+                }
+                else
+                {
+                    @Html.DisplayText("In") @Html.DisplayFor(modelItem => category.LastMessage.Topic.Name)
+                    @Html.DisplayText("door") @Html.DisplayFor(modelItem => category.LastMessage.Author.Username)
+                    @Html.DisplayText("op") @Html.DisplayFor(modelItem => category.LastMessage.Date)
+                }
             </td>
         </tr>
         }

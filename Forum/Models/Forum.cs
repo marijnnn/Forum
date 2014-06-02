@@ -18,18 +18,22 @@ namespace Forum
                     pair.Value.Categories = new List<Category>();
                 }
 
-                foreach (KeyValuePair<int, List<Category>> pair in Category.GetCategoriesByMainCategories())
+                Dictionary<int, List<Category>> categories = Category.GetCategoriesByMainCategories();
+                Dictionary<int, int> unreadtopiccounts = Category.GetUnreadTopicCounts(categories.Values.SelectMany(a => a).ToList());
+
+                foreach (KeyValuePair<int, List<Category>> pair in categories)
                 {
                     foreach (Category category in pair.Value)
                     {
                         if (category.HasAccess())
                         {
+                            category.UnreadTopicCount = unreadtopiccounts[category.Id];
                             maincategories[pair.Key].Categories.Add(category);
                         }
                     }
                 }
 
-                return MainCategory.GetMainCategories();
+                return maincategories.Values.ToList();
             }
         }
 

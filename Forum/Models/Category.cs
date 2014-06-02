@@ -77,10 +77,10 @@ namespace Forum
         {
             get
             {
-                /*if (this.unreadtopiccount != default(int))
+                if (this.unreadtopiccount != default(int))
                 {
                     return this.unreadtopiccount;
-                }*/
+                }
                 return this.unreadtopiccount = Category.GetUnreadTopicCount(this);
             }
             set
