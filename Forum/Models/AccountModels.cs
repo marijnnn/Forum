@@ -35,4 +35,22 @@ namespace Forum
         [Compare("Password", ErrorMessage = "De wachtwoorden komen niet overeen.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class MenuModel
+    {
+        public Account Account
+        {
+            get {
+                return Current.Account;
+            }
+        }
+
+        public bool IsLoggedIn
+        {
+            get
+            {
+                return Current.Right >= Right.User;
+            }
+        }
+    }
 }

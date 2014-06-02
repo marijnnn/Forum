@@ -58,11 +58,22 @@ namespace Forum.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "De gebruikersnaam en/of wachtwoord is incorrect.");
+                    ModelState.AddModelError("", "De gebruikersnaam is al in gebruik.");
                 }
             }
 
             return View(model);
+        }
+
+        public ActionResult Menu()
+        {
+            return View(new MenuModel());
+        }
+
+        public ActionResult Logout()
+        {
+            Current.Logout();
+            return RedirectToAction("Login");
         }
     }
 }

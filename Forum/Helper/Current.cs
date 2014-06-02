@@ -46,7 +46,7 @@ namespace Forum
 
         public static void Logout()
         {
-            Account = null;
+            account = null;
             HttpContext.Current.Session["AccountID"] = null;
         }
     }

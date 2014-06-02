@@ -1,0 +1,16 @@
+﻿@model Forum.MenuModel
+
+<div class="collapse navbar-collapse navbar-right">
+    <ul class="nav navbar-nav">
+        @if (Model.IsLoggedIn)
+        {
+            <li><a href="#">Ingelogd als @Html.DisplayFor(model => model.Account.Username)</a></li>
+            <li><a href="@Url.Content("~/Account/Logout")">Uitloggen</a></li>
+        }
+        else
+        {
+            <li><a href="@Url.Content("~/Account/Login")">Login</a></li>
+            <li><a href="@Url.Content("~/Account/Register")">Registreer</a></li>
+        }
+    </ul>
+</div>
