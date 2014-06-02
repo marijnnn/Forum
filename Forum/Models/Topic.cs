@@ -115,6 +115,27 @@ namespace Forum
             }
         }
 
+        public bool IsRead
+        {
+            get
+            {
+                if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
+                {
+                    return true;
+                }
+                else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this.Category))
+                {
+                    return true;
+                }
+                else if (this.LastMessage.Date < Topic.GetLastRead(this))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
         public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
             : this(name, authorid)
         {
@@ -143,24 +164,6 @@ namespace Forum
         public void Read()
         {
             Topic.MarkAsRead(this);
-        }
-
-        public bool IsRead()
-        {
-            if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
-            {
-                return true;
-            }
-            else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this.Category))
-            {
-                return true;
-            }
-            else if (this.LastMessage.Date < Topic.GetLastRead(this))
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public void Delete()
