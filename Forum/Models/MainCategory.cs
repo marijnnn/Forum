@@ -25,7 +25,7 @@ namespace Forum
             set;
         }
 
-        public List<Category> categories;
+        private List<Category> categories;
         public List<Category> Categories
         {
             get
