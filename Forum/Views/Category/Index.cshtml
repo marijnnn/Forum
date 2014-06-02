@@ -1,11 +1,16 @@
 ﻿@model Forum.Category
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li class="active">@Html.DisplayFor(modelItem => Model.Name)</li>
+</ol>
 
 <p>@Html.ActionLink("Klik hier om een nieuw topic toe te voegen.", "Add", new { id=ViewData["CategoryId"] })</p>
 

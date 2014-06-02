@@ -1,11 +1,17 @@
 ﻿@model Forum.Topic
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink(Model.Category.Name, "Index", "Category", new { id=Model.CategoryId }, null)</li>
+    <li class="active">@Html.DisplayFor(modelItem => Model.Name)</li>
+</ol>
 
 @foreach (var message in Model.Messages)
 {
