@@ -25,6 +25,8 @@ namespace Forum.Controllers
                 return View("NoAccess");
             }
 
+            ViewData["CategoryId"] = id;
+
             return View(Category.GetCategory(id));
         }
 

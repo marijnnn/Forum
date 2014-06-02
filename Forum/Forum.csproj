@@ -121,8 +121,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\TopicModel.cs" />
-    <Compile Include="ViewModel\AccountModels.cs" />
+    <Compile Include="ViewModel\TopicViewModel.cs" />
+    <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Data\Category.db.cs" />
     <Compile Include="Helper\Current.cs" />
