@@ -25,7 +25,7 @@ namespace Forum
 
         public static Account GetAccount(string username)
         {
-            foreach (DataRow row in Database.GetData("SELECT * FROM USERS WHERE USER_NAME = @name", new Dictionary<string, object>()
+            foreach (DataRow row in Database.GetData("SELECT * FROM USERS WHERE USER_NAME = LOWER(@name)", new Dictionary<string, object>()
             {
                 {"@name", username}
             }).Rows)
@@ -39,7 +39,7 @@ namespace Forum
         public static void AddAccount(Account account)
         {
             int id = Database.GetSequence("SEQ_USERS");
-            Database.Execute("INSERT INTO USERS (USER_ID, USER_NAME, USER_PASSWORD) VALUES (@id, @name, @password)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO USERS (USER_ID, USER_NAME, USER_PASSWORD) VALUES (@id, LOWER(@name), @password)", new Dictionary<string, object>()
             {
                 {"@id", id},
                 {"@name", account.Username},
