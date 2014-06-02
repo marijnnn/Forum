@@ -7,7 +7,7 @@ namespace Forum
 {
     public static class Current
     {
-        public static User User
+        public static Account Account
         {
             get;
             set;
@@ -17,20 +17,20 @@ namespace Forum
         {
             get
             {
-                if (User == null)
+                if (Account == null)
                 {
                     return Right.Guest;
                 }
                 else
                 {
-                    return User.Right;
+                    return Account.Right;
                 }
             }
         }
 
         public static void Logout()
         {
-            User = null;
+            Account = null;
         }
     }
 }

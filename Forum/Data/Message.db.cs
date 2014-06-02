@@ -12,7 +12,7 @@ namespace Forum
         {
             return new Message(Convert.ToInt32(row["MESSAGE_ID"]), row["MESSAGE_TEXT"].ToString(), Convert.ToDateTime(row["MESSAGE_DATE"]), Convert.ToInt32(row["MESSAGE_AUTHOR_ID"]), Convert.ToInt32(row["MESSAGE_TOPIC_ID"]))
             {
-                Author = User.rowToUser(row)
+                Author = Account.rowToAccount(row)
             };
         }
         private static DataTable getMessagesByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))

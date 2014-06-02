@@ -113,11 +113,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\Forum.db.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Data\Category.db.cs" />
     <Compile Include="Helper\Current.cs" />
@@ -131,8 +133,8 @@
     <Compile Include="Models\Right.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Data\Topic.db.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Data\User.db.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Data\Account.db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +182,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

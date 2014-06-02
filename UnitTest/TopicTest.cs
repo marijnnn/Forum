@@ -8,7 +8,7 @@ namespace UnitTest
     public class TopicTest
     {
         public CategoryTest CategoryTest = new CategoryTest();
-        public UserTest UserTest = new UserTest();
+        public AccountTest AccountTest = new AccountTest();
 
         public Forum.Topic Toegevoegd
         {
@@ -21,10 +21,10 @@ namespace UnitTest
         public void AddTopic()
         {
             this.CategoryTest.AddCategory();
-            this.UserTest.AddUser();
+            this.AccountTest.AddAccount();
 
-            this.Toegevoegd = new Forum.Topic("Titel", this.UserTest.Toegevoegd.Id);
-            Forum.Message message = new Forum.Message("Hier de inhoud", DateTime.Now, this.UserTest.Toegevoegd.Id);
+            this.Toegevoegd = new Forum.Topic("Titel", this.AccountTest.Toegevoegd.Id);
+            Forum.Message message = new Forum.Message("Hier de inhoud", DateTime.Now, this.AccountTest.Toegevoegd.Id);
             this.CategoryTest.Toegevoegd.AddTopic(this.Toegevoegd, message);
 
             Forum.Topic topic = Forum.Topic.GetTopic(this.Toegevoegd.Id);

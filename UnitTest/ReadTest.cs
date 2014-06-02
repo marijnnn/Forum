@@ -6,13 +6,13 @@ namespace UnitTest
     [TestClass]
     public class ReadTest
     {
-        private UserTest usertest = new UserTest();
+        private AccountTest usertest = new AccountTest();
 
         [TestInitialize]
-        public void CreateUser()
+        public void CreateAccount()
         {
-            usertest.AddUser();
-            Forum.Current.User = usertest.Toegevoegd;
+            usertest.AddAccount();
+            Forum.Current.Account = usertest.Toegevoegd;
         }
 
         [TestMethod]

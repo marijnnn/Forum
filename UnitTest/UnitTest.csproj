@@ -62,7 +62,7 @@
     <Compile Include="MessageTest.cs" />
     <Compile Include="MessageFileTest.cs" />
     <Compile Include="ReadTest.cs" />
-    <Compile Include="UserTest.cs" />
+    <Compile Include="AccountTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Forum\Forum.csproj">

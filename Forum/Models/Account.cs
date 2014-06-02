@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Forum
 {
-    public partial class User
+    public partial class Account
     {
         public int Id
         {
@@ -31,13 +31,13 @@ namespace Forum
             set;
         }
 
-        public User(int id, string username, string password, Right right)
+        public Account(int id, string username, string password, Right right)
             : this(username, password, right)
         {
             this.Id = id;
         }
 
-        public User(string username, string password, Right right = Right.User)
+        public Account(string username, string password, Right right = Right.User)
         {
             this.Username = username;
             this.Password = password;
@@ -46,20 +46,20 @@ namespace Forum
 
         public static bool Login(string username, string password)
         {
-            User user = User.GetUser(username);
+            Account account = Account.GetAccount(username);
 
-            if (user != null && user.Password == password)
+            if (account != null && account.Password == password)
             {
-                Current.User = user;
+                Current.Account = account;
                 return true;
             }
 
             return false;
         }
 
-        public static void Register(User user)
+        public static void Register(Account account)
         {
-            User.AddUser(user);
+            Account.AddAccount(account);
         }
     }
 }

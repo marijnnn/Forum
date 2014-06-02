@@ -12,13 +12,13 @@ namespace Forum
         {
             Database.Execute("INSERT INTO FORUM_READ (FR_USER_ID, FR_DATE) VALUES (@user_id, ysdate)", new Dictionary<string, object>()
             {
-                {"@user_id", Current.User.Id}
+                {"@user_id", Current.Account.Id}
             });
         }
 
         public static DateTime GetLastMarkAsRead()
         {
-            DataRow row = Database.GetData("SELECT MAX(FR_DATE) LAST FROM FORUM_READ WHERE FR_USER_ID = " + Current.User.Id).Rows[0];
+            DataRow row = Database.GetData("SELECT MAX(FR_DATE) LAST FROM FORUM_READ WHERE FR_USER_ID = " + Current.Account.Id).Rows[0];
 
             return row["LAST"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["LAST"]);
         }

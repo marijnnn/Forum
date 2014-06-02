@@ -7,7 +7,7 @@ namespace UnitTest
     public class MessageTest
     {
         public TopicTest TopicTest = new TopicTest();
-        public UserTest UserTest = new UserTest();
+        public AccountTest AccountTest = new AccountTest();
 
         public Forum.Message Toegevoegd
         {
@@ -18,14 +18,14 @@ namespace UnitTest
         public MessageTest()
         {
             this.TopicTest.AddTopic();
-            this.UserTest.AddUser();
+            this.AccountTest.AddAccount();
         }
 
         [TestInitialize]
         [TestMethod]
         public void AddMessage()
         {
-            this.Toegevoegd = new Forum.Message("Hier de reactie", DateTime.Now, this.UserTest.Toegevoegd.Id);
+            this.Toegevoegd = new Forum.Message("Hier de reactie", DateTime.Now, this.AccountTest.Toegevoegd.Id);
             this.TopicTest.Toegevoegd.AddMessage(this.Toegevoegd);
 
             Forum.Message message = Forum.Message.GetMessage(this.Toegevoegd.Id);

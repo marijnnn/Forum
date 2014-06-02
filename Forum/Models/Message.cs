@@ -24,8 +24,8 @@ namespace Forum
             private set;
         }
 
-        private User author;
-        public User Author
+        private Account author;
+        public Account Author
         {
             get
             {
@@ -33,7 +33,7 @@ namespace Forum
                 {
                     return this.author;
                 }
-                return this.author = User.GetUser(this.AuthorId);
+                return this.author = Account.GetAccount(this.AuthorId);
             }
             set
             {
