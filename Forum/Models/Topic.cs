@@ -119,15 +119,15 @@ namespace Forum
         {
             get
             {
-                if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
+                if (this.LastMessage.Date <= Forum.GetLastMarkAsRead())
                 {
                     return true;
                 }
-                else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this.Category))
+                else if (this.LastMessage.Date <= Category.GetLastMarkAsRead(this.Category))
                 {
                     return true;
                 }
-                else if (this.LastMessage.Date < Topic.GetLastRead(this))
+                else if (this.LastMessage.Date <= Topic.GetLastRead(this))
                 {
                     return true;
                 }
