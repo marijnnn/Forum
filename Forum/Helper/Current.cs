@@ -44,6 +44,14 @@ namespace Forum
             }
         }
 
+        public static bool IsLoggedIn
+        {
+            get
+            {
+                return Right >= Right.User;
+            }
+        }
+
         public static void Logout()
         {
             account = null;

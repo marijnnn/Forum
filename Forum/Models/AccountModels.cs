@@ -49,7 +49,7 @@ namespace Forum
         {
             get
             {
-                return Current.Right >= Right.User;
+                return Current.IsLoggedIn;
             }
         }
     }
