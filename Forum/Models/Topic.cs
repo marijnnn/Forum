@@ -121,14 +121,17 @@ namespace Forum
             {
                 if (this.LastMessage.Date < Forum.GetLastMarkAsRead())
                 {
+                    throw new Exception("forum");
                     return true;
                 }
                 else if (this.LastMessage.Date < Category.GetLastMarkAsRead(this.Category))
                 {
+                    throw new Exception("category");
                     return true;
                 }
                 else if (this.LastMessage.Date < Topic.GetLastRead(this))
                 {
+                    throw new Exception("topic");
                     return true;
                 }
 
