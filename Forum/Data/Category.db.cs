@@ -111,10 +111,7 @@ namespace Forum
 
         public static int GetUnreadTopicCount(Category category)
         {
-            List<Category> lijst = new List<Category>();
-            lijst.Add(category);
-            throw new Exception("Er wordt iets toegeveogd!" + "{" + string.Join(",", GetUnreadTopicCounts(lijst).Select(kv => kv.Key.ToString() + "=" + kv.Value.ToString()).ToArray()) + "}");
-            return GetUnreadTopicCounts(lijst)[category.Id];
+            return GetUnreadTopicCounts(new List<Category>() { category })[category.Id];
         }
 
         public static Dictionary<int, int> GetUnreadTopicCounts(List<Category> categories)
