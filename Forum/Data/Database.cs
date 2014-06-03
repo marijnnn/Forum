@@ -83,9 +83,15 @@ namespace Forum
 
         private static OracleCommand toOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {
-            query = ParseParameters(query, waardes);
-
             OracleCommand command = new OracleCommand(query, oc);
+
+            if (waardes != null && waardes.Count > 0)
+            {
+                foreach (KeyValuePair<string, object> waarde in waardes)
+                {
+                    command.Parameters.Add(waarde.Key, waarde.Value);
+                }
+            }
 
             return command;
         }
@@ -120,9 +126,9 @@ namespace Forum
                         vervang = Quote(waarde.Value.ToString());
                     }
 
-                    query = query.Replace(waarde.Key, vervang);
+                    query = query.Replace(':' + waarde.Key, vervang);
 
-                    // Oracle Command werkt op een of andere manier niet, daarom custom parameters.
+                    //Oracle Command werkt op een of andere manier niet, daarom custom parameters.
                     //command.Parameters.Add(new OracleParameter(waarde.Key, waarde.Value).Value);
                 }
             }

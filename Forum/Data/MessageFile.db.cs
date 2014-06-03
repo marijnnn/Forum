@@ -8,7 +8,7 @@ namespace Forum
 {
     public partial class MessageFile
     {
-        public static MessageFile rowToMessageFile(DataRow row)
+        private static MessageFile rowToMessageFile(DataRow row)
         {
             return new MessageFile(Convert.ToInt32(row["MESSAGEFILE_ID"]), row["MESSAGEFILE_NAME"].ToString(), row["MESSAGEFILE_LOCATION"].ToString());
         } 
@@ -54,12 +54,12 @@ namespace Forum
         public static void AddMessageFile(Message message, MessageFile messagefile)
         {
             int id = Database.GetSequence("SEQ_MESSAGEFILE");
-            Database.Execute("INSERT INTO MESSAGEFILE (MESSAGEFILE_ID, MESSAGEFILE_NAME, MESSAGEFILE_LOCATION, MESSAGEFILE_MESSAGE_ID) VALUES (@id, @name, @location, @message_id)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO MESSAGEFILE (MESSAGEFILE_ID, MESSAGEFILE_NAME, MESSAGEFILE_LOCATION, MESSAGEFILE_MESSAGE_ID) VALUES (:id, :name, :location, :message_id)", new Dictionary<string, object>()
             {
-                {"@id", id},
-                {"@name", messagefile.Name},
-                {"@location", messagefile.Location},
-                {"@message_id", message.Id}
+                {"id", id},
+                {"name", messagefile.Name},
+                {"location", messagefile.Location},
+                {"message_id", message.Id}
             });
             messagefile.Id = id;
         }

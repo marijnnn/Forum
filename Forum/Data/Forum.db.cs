@@ -11,9 +11,9 @@ namespace Forum
         public static void MarkAsRead()
         {
             Database.Execute("DELETE FROM FORUM_READ WHERE FR_USER_ID = " + Current.Account.Id);
-            Database.Execute("INSERT INTO FORUM_READ (FR_USER_ID, FR_DATE) VALUES (@user_id, sysdate)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO FORUM_READ (FR_USER_ID, FR_DATE) VALUES (:user_id, sysdate)", new Dictionary<string, object>()
             {
-                {"@user_id", Current.Account.Id}
+                {"user_id", Current.Account.Id}
             });
         }
 

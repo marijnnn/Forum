@@ -38,22 +38,21 @@ namespace Forum
         public static void AddMainCategory(MainCategory maincategory)
         {
             int id = Database.GetSequence("SEQ_MAINCATEGORY");
-            Database.Execute("INSERT INTO MAINCATEGORY (MAINCATEGORY_ID, MAINCATEGORY_NAME, MAINCATEGORY_ORDERNUMBER) VALUES (@id, @name, @ordernumber)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO MAINCATEGORY (MAINCATEGORY_ID, MAINCATEGORY_NAME, MAINCATEGORY_ORDERNUMBER) VALUES (:id, :name, :ordernumber)", new Dictionary<string, object>()
             {
-                {"@id", id},
-                {"@name", maincategory.Name},
-                {"@ordernumber", maincategory.OrderNumber}
+                {"id", id},
+                {"name", maincategory.Name},
+                {"ordernumber", maincategory.OrderNumber}
             });
             maincategory.Id = id;
         }
 
         public static void ChangeMainCategory(MainCategory maincategory)
         {
-            Database.Execute("UPDATE MAINCATEGORY SET MAINCATEGORY_NAME = @name, MAINCATEGORY_ORDERNUMBER = @ordernumber WHERE MAINCATEGORY_ID = @id", new Dictionary<string, object>()
+            Database.Execute("UPDATE MAINCATEGORY SET MAINCATEGORY_NAME = :name, MAINCATEGORY_ORDERNUMBER = :ordernumber WHERE MAINCATEGORY_ID = " + maincategory.Id, new Dictionary<string, object>()
             {
-                {"@id", maincategory.Id},
-                {"@name", maincategory.Name},
-                {"@ordernumber", maincategory.OrderNumber}
+                {"name", maincategory.Name},
+                {"ordernumber", maincategory.OrderNumber}
             });
         }
 

@@ -51,12 +51,12 @@ namespace Forum
         public static void AddTopic(Category category, Topic topic)
         {
             int id = Database.GetSequence("SEQ_TOPIC");
-            Database.Execute("INSERT INTO TOPIC (TOPIC_ID, TOPIC_NAME, TOPIC_AUTHOR_ID, TOPIC_CATEGORY_ID) VALUES (@id, @name, @author_id, @category_id)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO TOPIC (TOPIC_ID, TOPIC_NAME, TOPIC_AUTHOR_ID, TOPIC_CATEGORY_ID) VALUES (:id, :name, :author_id, :category_id)", new Dictionary<string, object>()
             {
-                {"@id", id},
-                {"@name", topic.Name},
-                {"@author_id", topic.AuthorId},
-                {"@category_id", category.Id}
+                {"id", id},
+                {"name", topic.Name},
+                {"author_id", topic.AuthorId},
+                {"category_id", category.Id}
             });
             Database.Execute("UPDATE CATEGORY SET CATEGORY_TOPICCOUNT = CATEGORY_TOPICCOUNT + 1, CATEGORY_MESSAGECOUNT = CATEGORY_MESSAGECOUNT - 1 WHERE CATEGORY_ID = " + category.Id);
             topic.Id = id;
@@ -76,10 +76,10 @@ namespace Forum
             if (Current.IsLoggedIn)
             {
                 Database.Execute("DELETE FROM TOPIC_READ WHERE TR_USER_ID = " + Current.Account.Id + " AND TR_TOPIC_ID = " + topic.Id);
-                Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (@user_id, @topic_id, sysdate)", new Dictionary<string, object>()
+                Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (:user_id, :topic_id, sysdate)", new Dictionary<string, object>()
                 {
-                    {"@user_id", Current.Account.Id},
-                    {"@topic_id", topic.Id}
+                    {"user_id", Current.Account.Id},
+                    {"topic_id", topic.Id}
                 });
             }
         }
