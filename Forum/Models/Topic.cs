@@ -119,7 +119,11 @@ namespace Forum
         {
             get
             {
-                if (this.LastMessage.Date <= Forum.GetLastMarkAsRead())
+                if (!Current.IsLoggedIn)
+                {
+                    return true;
+                }
+                else if (this.LastMessage.Date <= Forum.GetLastMarkAsRead())
                 {
                     return true;
                 }
