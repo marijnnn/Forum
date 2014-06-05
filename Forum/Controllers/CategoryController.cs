@@ -61,8 +61,8 @@ namespace Forum.Controllers
             }
             else if (ModelState.IsValid)
             {
-                Topic topic = new Topic(model.Title, Current.Account.Id);
-                category.AddTopic(topic, new Message(model.Text, DateTime.Now, Current.Account.Id));
+                Topic topic = new Topic(model.Title, Current.AccountId);
+                category.AddTopic(topic, new Message(model.Text, DateTime.Now, Current.AccountId));
                 return RedirectToAction("Index", "Topic", new { id=topic.Id });
             }
 

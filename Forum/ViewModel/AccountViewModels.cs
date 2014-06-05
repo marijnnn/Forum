@@ -40,7 +40,8 @@ namespace Forum
     {
         public Account Account
         {
-            get {
+            get
+            {
                 return Current.Account;
             }
         }

@@ -8,16 +8,16 @@ namespace Forum
 {
     public partial class Account
     {
-        public static Account rowToAccount(DataRow row)
+        public static Account RowToAccount(DataRow row)
         {
             return new Account(Convert.ToInt32(row["USER_ID"]), row["USER_NAME"].ToString(), row["USER_PASSWORD"].ToString(), (Right)Enum.Parse(typeof(Right), row["USER_RIGHT"].ToString()));
         }
 
         public static Account GetAccount(int id)
         {
-            foreach (DataRow row in Database.GetData("SELECT * FROM USERS").Rows)
+            foreach (DataRow row in Database.GetData("SELECT * FROM USERS WHERE USER_ID = " + id).Rows)
             {
-                return rowToAccount(row);
+                return RowToAccount(row);
             }
 
             return null;
@@ -30,7 +30,7 @@ namespace Forum
                 {"name", username}
             }).Rows)
             {
-                return rowToAccount(row);
+                return RowToAccount(row);
             }
 
             return null;

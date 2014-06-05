@@ -8,24 +8,30 @@ namespace Forum
 {
     public static class Current
     {
-        private static Account account;
+        public static int AccountId
+        {
+            get
+            {
+                return Convert.ToInt32(HttpContext.Current.Session["AccountID"]);
+            }
+        }
+
         public static Account Account
         {
             get
             {
-                if (account == null && HttpContext.Current.Session["AccountID"] != null)
+                if (HttpContext.Current.Session["AccountID"] != null)
                 {
                     return Account.GetAccount(Convert.ToInt32(HttpContext.Current.Session["AccountID"]));
                 }
                 else
                 {
-                    return account;
+                    return null;
                 }
             }
             set
             {
-                HttpContext.Current.Session["AccountID"] = value.Id;
-                account = value;
+                HttpContext.Current.Session["AccountID"] = ((Account)value).Id;
             }
         }
 
@@ -54,7 +60,6 @@ namespace Forum
 
         public static void Logout()
         {
-            account = null;
             HttpContext.Current.Session["AccountID"] = null;
         }
     }

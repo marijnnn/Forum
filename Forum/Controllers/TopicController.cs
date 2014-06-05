@@ -44,7 +44,7 @@ namespace Forum.Controllers
             }
             else if (ModelState.IsValid)
             {
-                topic.AddMessage(new Message(model.Text, DateTime.Now, Current.Account.Id));
+                topic.AddMessage(new Message(model.Text, DateTime.Now, Current.AccountId));
             }
 
             topic.Read();

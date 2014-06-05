@@ -18,7 +18,7 @@ namespace Forum
                 Convert.ToInt32(row["TOPIC_CATEGORY_ID"])
             )
             {
-                Author = Account.rowToAccount(row)
+                Author = Account.RowToAccount(row)
             };
         }
 
@@ -75,10 +75,10 @@ namespace Forum
         {
             if (Current.IsLoggedIn)
             {
-                Database.Execute("DELETE FROM TOPIC_READ WHERE TR_USER_ID = " + Current.Account.Id + " AND TR_TOPIC_ID = " + topic.Id);
+                Database.Execute("DELETE FROM TOPIC_READ WHERE TR_USER_ID = " + Current.AccountId + " AND TR_TOPIC_ID = " + topic.Id);
                 Database.Execute("INSERT INTO TOPIC_READ (TR_USER_ID, TR_TOPIC_ID, TR_DATE) VALUES (:user_id, :topic_id, sysdate)", new Dictionary<string, object>()
                 {
-                    {"user_id", Current.Account.Id},
+                    {"user_id", Current.AccountId},
                     {"topic_id", topic.Id}
                 });
             }
@@ -86,7 +86,7 @@ namespace Forum
 
         public static DateTime GetLastRead(Topic topic)
         {
-            DataRow row = Database.GetData("SELECT MAX(TR_DATE) LAST FROM TOPIC_READ WHERE TR_TOPIC_ID = " + topic.Id + " AND TR_USER_ID = " + Current.Account.Id).Rows[0];
+            DataRow row = Database.GetData("SELECT MAX(TR_DATE) LAST FROM TOPIC_READ WHERE TR_TOPIC_ID = " + topic.Id + " AND TR_USER_ID = " + Current.AccountId).Rows[0];
 
             return row["LAST"] == DBNull.Value ? default(DateTime) : Convert.ToDateTime(row["LAST"]);
         }

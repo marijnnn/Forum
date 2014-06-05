@@ -214,6 +214,9 @@
   <ItemGroup>
     <Content Include="Views\Topic\Add.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Settings.StyleCop" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
