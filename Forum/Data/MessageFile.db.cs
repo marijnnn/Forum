@@ -8,7 +8,7 @@ namespace Forum
 {
     public partial class MessageFile
     {
-        private static MessageFile rowToMessageFile(DataRow row)
+        private static MessageFile RowToMessageFile(DataRow row)
         {
             return new MessageFile(Convert.ToInt32(row["MESSAGEFILE_ID"]), row["MESSAGEFILE_NAME"].ToString(), row["MESSAGEFILE_LOCATION"].ToString());
         } 
@@ -19,7 +19,7 @@ namespace Forum
 
             foreach (DataRow row in Database.GetData("SELECT * FROM MESSAGEFILE WHERE MESSAGEFILE_MESSAGE_ID = " + message.Id).Rows)
             {
-                messagefiles.Add(rowToMessageFile(row));
+                messagefiles.Add(RowToMessageFile(row));
             }
 
             return messagefiles;
@@ -44,7 +44,7 @@ namespace Forum
                         messagefiles[message_id] = new List<MessageFile>();
                     }
 
-                    messagefiles[message_id].Add(rowToMessageFile(row));
+                    messagefiles[message_id].Add(RowToMessageFile(row));
                 }
             }
 

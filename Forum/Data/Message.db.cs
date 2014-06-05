@@ -8,23 +8,23 @@ namespace Forum
 {
     public partial class Message
     {
-        public static Message rowToMessage(DataRow row)
+        public static Message RowToMessage(DataRow row)
         {
             return new Message(Convert.ToInt32(row["MESSAGE_ID"]), row["MESSAGE_TEXT"].ToString(), Convert.ToDateTime(row["MESSAGE_DATE"]), Convert.ToInt32(row["MESSAGE_AUTHOR_ID"]), Convert.ToInt32(row["MESSAGE_TOPIC_ID"]))
             {
                 Author = Account.RowToAccount(row)
             };
         }
-        private static DataTable getMessagesByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
+        private static DataTable GetMessagesByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
         {
             return Database.GetData("SELECT MESSAGE.*, USERS.* FROM MESSAGE JOIN USERS ON MESSAGE_AUTHOR_ID = USER_ID" + (where != "" ? " WHERE " + where : ""), parameters);
         }
 
         public static Message GetMessage(int id)
         {
-            foreach (DataRow row in getMessagesByWhere("MESSAGE_ID = " + id).Rows)
+            foreach (DataRow row in GetMessagesByWhere("MESSAGE_ID = " + id).Rows)
             {
-                return rowToMessage(row);
+                return RowToMessage(row);
             }
 
             return null;
@@ -34,9 +34,9 @@ namespace Forum
         {
             List<Message> messages = new List<Message>();
 
-            foreach (DataRow row in getMessagesByWhere("MESSAGE_TOPIC_ID = " + topic.Id).Rows)
+            foreach (DataRow row in GetMessagesByWhere("MESSAGE_TOPIC_ID = " + topic.Id).Rows)
             {
-                messages.Add(rowToMessage(row));
+                messages.Add(RowToMessage(row));
             }
 
             return messages;

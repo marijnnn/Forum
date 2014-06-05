@@ -7,6 +7,26 @@ namespace Forum
 {
     public partial class Category
     {
+        private Message lastmessage;
+        private int unreadtopiccount;
+
+        public Category(int id, string name, string description, int ordernumber, int topiccount, int messagecount, int lastmessageid, Right minimumright)
+            : this(name, description, ordernumber, minimumright)
+        {
+            this.Id = id;
+            this.OrderNumber = ordernumber;
+            this.TopicCount = topiccount;
+            this.MessageCount = messagecount;
+            this.LastMessageId = lastmessageid;
+        }
+
+        public Category(string name, string description, int ordernumber, Right minimumright)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.MinimumRight = minimumright;
+        }
+
         public int Id
         {
             get;
@@ -49,7 +69,6 @@ namespace Forum
             private set;
         }
 
-        private Message lastmessage;
         public Message LastMessage
         {
             get
@@ -72,7 +91,6 @@ namespace Forum
             set;
         }
 
-        private int unreadtopiccount;
         public int UnreadTopicCount
         {
             get
@@ -95,23 +113,6 @@ namespace Forum
             {
                 return Topic.GetTopicByCategory(this);
             }
-        }
-
-        public Category(int id, string name, string description, int ordernumber, int topiccount, int messagecount, int lastmessageid, Right minimumright)
-            : this(name, description, ordernumber, minimumright)
-        {
-            this.Id = id;
-            this.OrderNumber = ordernumber;
-            this.TopicCount = topiccount;
-            this.MessageCount = messagecount;
-            this.LastMessageId = lastmessageid;
-        }
-
-        public Category(string name, string description, int ordernumber, Right minimumright)
-        {
-            this.Name = name;
-            this.Description = description;
-            this.MinimumRight = minimumright;
         }
 
         public void MarkAsRead()

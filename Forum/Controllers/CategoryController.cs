@@ -8,10 +8,6 @@ namespace Forum.Controllers
 {
     public class CategoryController : Controller
     {
-
-        //
-        // GET: /Category/
-
         public ActionResult Index(int id)
         {
             Category category = Category.GetCategory(id);

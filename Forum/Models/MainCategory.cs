@@ -7,6 +7,19 @@ namespace Forum
 {
     public partial class MainCategory
     {
+        private List<Category> categories;
+        public MainCategory(int id, string name, int ordernumber)
+            : this(name, ordernumber)
+        {
+            this.Id = id;
+        }
+
+        public MainCategory(string name, int ordernumber)
+        {
+            this.Name = name;
+            this.OrderNumber = ordernumber;
+        }
+
         public int Id
         {
             get;
@@ -25,7 +38,6 @@ namespace Forum
             set;
         }
 
-        private List<Category> categories;
         public List<Category> Categories
         {
             get
@@ -40,18 +52,6 @@ namespace Forum
             {
                 this.categories = value;
             }
-        }
-
-        public MainCategory(int id, string name, int ordernumber) 
-            : this(name, ordernumber)
-        {
-            this.Id = id;
-        }
-
-        public MainCategory(string name, int ordernumber)
-        {
-            this.Name = name;
-            this.OrderNumber = ordernumber;
         }
 
         public void AddCategory(Category category)

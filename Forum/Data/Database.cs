@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
-using System.Data;
 
 namespace Forum
 {
@@ -33,7 +33,7 @@ namespace Forum
             try
             {
                 oc.Open();
-                OracleCommand command = toOracleCommand(query, waardes);
+                OracleCommand command = ToOracleCommand(query, waardes);
                 OracleDataAdapter adapter = new OracleDataAdapter(command);
 
                 adapter.Fill(dt);
@@ -64,7 +64,7 @@ namespace Forum
             try
             {
                 oc.Open();
-                OracleCommand command = toOracleCommand(query, waardes);
+                OracleCommand command = ToOracleCommand(query, waardes);
                 command.ExecuteNonQuery();
             }
             catch (OracleException ex)
@@ -81,7 +81,7 @@ namespace Forum
             }
         }
 
-        private static OracleCommand toOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
+        private static OracleCommand ToOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {
             OracleCommand command = new OracleCommand(query, oc);
 
@@ -103,7 +103,7 @@ namespace Forum
                 foreach (KeyValuePair<string, object> waarde in waardes)
                 {
                     string vervang = "";
-                    if (waarde.Value is Int32 || waarde.Value.ToString() == "NULL")
+                    if (waarde.Value is int || waarde.Value.ToString() == "NULL")
                     {
                         vervang = waarde.Value.ToString();
                     }
@@ -152,7 +152,7 @@ namespace Forum
         }
     }
 
-    class DatabaseException : Exception
+    public class DatabaseException : Exception
     {
         public DatabaseException(string message, string query)
             : base(GenerateMessage(message, query))

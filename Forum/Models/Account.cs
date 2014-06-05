@@ -7,6 +7,19 @@ namespace Forum
 {
     public partial class Account
     {
+        public Account(int id, string username, string password, Right right)
+            : this(username, password, right)
+        {
+            this.Id = id;
+        }
+
+        public Account(string username, string password, Right right = Right.User)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.Right = right;
+        }
+
         public int Id
         {
             get;
@@ -29,19 +42,6 @@ namespace Forum
         {
             get;
             set;
-        }
-
-        public Account(int id, string username, string password, Right right)
-            : this(username, password, right)
-        {
-            this.Id = id;
-        }
-
-        public Account(string username, string password, Right right = Right.User)
-        {
-            this.Username = username;
-            this.Password = password;
-            this.Right = right;
         }
 
         public static bool Login(string username, string password)

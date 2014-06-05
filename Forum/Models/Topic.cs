@@ -9,6 +9,25 @@ namespace Forum
 {
     public partial class Topic
     {
+        private Account author;
+        private Message lastmessage;
+        private Category category;
+        private int messagecount;
+
+        public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
+            : this(name, authorid)
+        {
+            this.Id = id;
+            this.LastMessageId = lastmessageid;
+            this.CategoryId = categoryid;
+        }
+
+        public Topic(string name, int authorid)
+        {
+            this.Name = name;
+            this.AuthorId = authorid;
+        }
+
         public int Id
         {
             get;
@@ -27,7 +46,6 @@ namespace Forum
             private set;
         }
 
-        private Account author;
         public Account Author
         {
             get
@@ -50,7 +68,6 @@ namespace Forum
             private set;
         }
 
-        private Message lastmessage;
         public Message LastMessage
         {
             get
@@ -73,7 +90,6 @@ namespace Forum
             set;
         }
 
-        private Category category;
         public Category Category
         {
             get
@@ -98,12 +114,11 @@ namespace Forum
             }
         }
 
-        private int messagecount;
         public int MessageCount
         {
             get
             {
-                if (!messagecount.Equals(default(int)))
+                if (!this.messagecount.Equals(default(int)))
                 {
                     return this.messagecount;
                 }
@@ -138,20 +153,6 @@ namespace Forum
 
                 return false;
             }
-        }
-
-        public Topic(int id, string name, int authorid, int lastmessageid, int categoryid)
-            : this(name, authorid)
-        {
-            this.Id = id;
-            this.LastMessageId = lastmessageid;
-            this.CategoryId = categoryid;
-        }
-
-        public Topic(string name, int authorid)
-        {
-            this.Name = name;
-            this.AuthorId = authorid;
         }
 
         public bool HasAccess()

@@ -8,7 +8,7 @@ namespace Forum
 {
     public partial class Topic
     {
-        private static Topic rowToTopic(DataRow row)
+        private static Topic RowToTopic(DataRow row)
         {
             return new Topic(
                 Convert.ToInt32(row["TOPIC_ID"]),
@@ -22,15 +22,15 @@ namespace Forum
             };
         }
 
-        private static DataTable getTopicsByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
+        private static DataTable GetTopicsByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
         {
             return Database.GetData("SELECT TOPIC.*, USERS.* FROM TOPIC JOIN USERS ON TOPIC_AUTHOR_ID = USER_ID" + (where != "" ? " WHERE " + where : "") + " ORDER BY TOPIC_LASTMESSAGE_ID DESC", parameters);
         }
 
         public static Topic GetTopic(int id)
         {
-            foreach(DataRow row in getTopicsByWhere("TOPIC_ID = " + id).Rows){
-                return rowToTopic(row);
+            foreach(DataRow row in GetTopicsByWhere("TOPIC_ID = " + id).Rows){
+                return RowToTopic(row);
             }
 
             return null;
@@ -40,9 +40,9 @@ namespace Forum
         {
             List<Topic> topics = new List<Topic>();
 
-            foreach (DataRow row in getTopicsByWhere("TOPIC_CATEGORY_ID = " + category.Id).Rows)
+            foreach (DataRow row in GetTopicsByWhere("TOPIC_CATEGORY_ID = " + category.Id).Rows)
             {
-                topics.Add(rowToTopic(row));
+                topics.Add(RowToTopic(row));
             }
 
             return topics;

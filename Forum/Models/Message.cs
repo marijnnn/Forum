@@ -7,6 +7,23 @@ namespace Forum
 {
     public partial class Message
     {
+        private Account author;
+        private Topic topic;
+
+        public Message(int id, string text, DateTime date, int authorid, int topicid)
+            : this(text, date, authorid)
+        {
+            this.Id = id;
+            this.TopicId = topicid;
+        }
+
+        public Message(string text, DateTime date, int authorid)
+        {
+            this.Text = text;
+            this.Date = date;
+            this.AuthorId = authorid;
+        }
+
         public int Id
         {
             get;
@@ -24,7 +41,6 @@ namespace Forum
             private set;
         }
 
-        private Account author;
         public Account Author
         {
             get
@@ -53,7 +69,6 @@ namespace Forum
             set;
         }
 
-        private Topic topic;
         public Topic Topic
         {
             get
@@ -76,20 +91,6 @@ namespace Forum
             {
                 return MessageFile.GetMessageFilesByMessage(this);
             }
-        }
-
-        public Message(int id, string text, DateTime date, int authorid, int topicid)
-            : this(text, date, authorid)
-        {
-            this.Id = id;
-            this.TopicId = topicid;
-        }
-
-        public Message(string text, DateTime date, int authorid)
-        {
-            this.Text = text;
-            this.Date = date;
-            this.AuthorId = authorid;
         }
 
         public bool IsRead()

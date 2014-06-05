@@ -8,9 +8,6 @@ namespace Forum.Controllers
 {
     public class AccountController : Controller
     {
-        //
-        // GET: /Account/
-
         public ActionResult Index()
         {
             return RedirectToAction("Login");
@@ -20,9 +17,6 @@ namespace Forum.Controllers
         {
             return View();
         }
-
-        //
-        // POST: /Account/Login
 
         [HttpPost]
         public ActionResult Login(LoginModel model)

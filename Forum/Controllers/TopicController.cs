@@ -8,9 +8,6 @@ namespace Forum.Controllers
 {
     public class TopicController : Controller
     {
-        //
-        // GET: /Topic/
-
         public ActionResult Index(int id)
         {
             Topic topic = Topic.GetTopic(id);

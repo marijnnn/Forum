@@ -8,7 +8,7 @@ namespace Forum
 {
 	public partial class MainCategory
 	{
-        public static MainCategory rowToMainCategory(DataRow row)
+        public static MainCategory RowToMainCategory(DataRow row)
         {
             return new MainCategory(Convert.ToInt32(row["MAINCATEGORY_ID"]), row["MAINCATEGORY_NAME"].ToString(), Convert.ToInt32(row["MAINCATEGORY_ORDERNUMBER"]));
         }
@@ -19,7 +19,7 @@ namespace Forum
 
             foreach (DataRow row in Database.GetData("SELECT * FROM MAINCATEGORY").Rows)
             {
-                maincategories.Add(rowToMainCategory(row));
+                maincategories.Add(RowToMainCategory(row));
             }
 
             return maincategories;
@@ -29,7 +29,7 @@ namespace Forum
         {
             foreach (DataRow row in Database.GetData("SELECT * FROM MAINCATEGORY WHERE MAINCATEGORY_ID = " + id).Rows)
             {
-                return rowToMainCategory(row);
+                return RowToMainCategory(row);
             }
 
             return null;

@@ -8,7 +8,7 @@ namespace Forum
 {
     public partial class Category
     {
-        private static Category rowToCategory(DataRow row)
+        private static Category RowToCategory(DataRow row)
         {
             return new Category(
                 Convert.ToInt32(row["CATEGORY_ID"]), 
@@ -35,7 +35,7 @@ namespace Forum
                     categories.Add(maincategory_id, new List<Category>());
                 }
 
-                categories[maincategory_id].Add(rowToCategory(row));
+                categories[maincategory_id].Add(RowToCategory(row));
             }
 
             return categories;
@@ -45,7 +45,7 @@ namespace Forum
         {
             foreach (DataRow row in Database.GetData("SELECT * FROM CATEGORY WHERE CATEGORY_ID = " + id).Rows)
             {
-                return rowToCategory(row);
+                return RowToCategory(row);
             }
 
             return null;
@@ -57,7 +57,7 @@ namespace Forum
 
             foreach (DataRow row in Database.GetData("SELECT * FROM CATEGORY WHERE CATEGORY_MAINCATEGORY_ID = " + maincategory.Id).Rows)
             {
-                categories.Add(rowToCategory(row));
+                categories.Add(RowToCategory(row));
             }
 
             return categories;
